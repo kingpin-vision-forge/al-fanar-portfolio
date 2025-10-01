@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"app/components/SiteBackground.tsx -> @/app/components/reactbits/SilkBg\":{\"id\":\"app/components/SiteBackground.tsx -> @/app/components/reactbits/SilkBg\",\"files\":[\"static/chunks/_app-pages-browser_app_components_reactbits_SilkBg_tsx.js\"]}}"
