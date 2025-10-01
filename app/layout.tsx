@@ -1,49 +1,32 @@
-import '../styles/globals.css';
-import type { Metadata } from 'next';
-import localFont from 'next/font/local';
-import { ReactNode } from 'react';
-import { meta, orgJsonLd, breadcrumbJsonLd, productJsonLd } from '@/lib/seo';
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter, Cormorant_Garamond } from "next/font/google";
+import SiteBackground from "@/app/components/SiteBackground";
 
-const manrope = localFont({
-  src: '../fonts/Manrope-VariableFont_wght.ttf',
-  variable: '--font-manrope',
-  weight: '100 900',
-  display: 'swap'
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(meta.url),
-  title: meta.title,
-  description: meta.description,
-  openGraph: {
-    title: meta.title,
-    description: meta.description,
-    url: meta.url,
-    images: [meta.image]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: meta.title,
-    description: meta.description,
-    images: [meta.image]
-  }
+  title: "Alfanar Enterprises — Family-first fashion",
+  description:
+    "Discover the Alfanar Enterprises landing page: men’s tailoring, women’s modesty and playful kidswear crafted for modern families.",
 };
 
-const jsonLdPayload = [orgJsonLd, breadcrumbJsonLd, ...productJsonLd];
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={`${manrope.variable}`} suppressHydrationWarning>
-      <head>
-        {jsonLdPayload.map((schema, idx) => (
-          <script
-            key={idx}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        ))}
-      </head>
-      <body className="min-h-dvh antialiased bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
+    <html lang="en">
+      <body
+        className={`${inter.variable} ${cormorant.variable} bg-[#f6f1e8] text-[#1b1b1b] antialiased selection:bg-[#1b1b1b] selection:text-white`}
+      >
+        <SiteBackground />
         {children}
       </body>
     </html>

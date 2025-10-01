@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+:root {
+  color-scheme: light;
+  --brand-cream: #f6f1e8;
+  --brand-ink: #1b1b1b;
+  --brand-line: rgba(27, 27, 27, 0.12);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--brand-cream);
+  color: var(--brand-ink);
+  font-family: var(--font-sans);
+}
+
+a {
+  text-decoration: none;
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.hairline {
+  border-color: var(--brand-line);
+}
+
+::selection {
+  background: var(--brand-ink);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  #crisp-chatbox,
+  #tidio-chat,
+  #botpress-webchat,
+  #botpress-webchat-container,
+  [data-chatbot],
+  iframe[title*="chat"],
+  iframe[src*="chat"] {
+    transform: scale(0.82);
+    transform-origin: bottom right;
+    right: 0.75rem !important;
+    bottom: 5.25rem !important;
+  }
+}
+
+@keyframes marquee-flow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-flow 10s linear infinite;
+}

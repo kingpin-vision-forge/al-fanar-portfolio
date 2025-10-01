@@ -1,47 +1,36 @@
-'use client';
-import { useEffect } from 'react';
-import { Splash } from '@/components/ui/Splash';
-import { Navbar } from '@/components/ui/Navbar';
-import { Hero } from '@/components/ui/Hero';
-import { PromoBar } from '@/components/ui/PromoBar';
-import { AboutTiles } from '@/components/ui/AboutTiles';
-import { Featured } from '@/components/ui/Featured';
-import { Gallery } from '@/components/ui/Gallery';
-import { Newsletter } from '@/components/ui/Newsletter';
-import { Footer } from '@/components/ui/Footer';
-import { ContactStrip } from '@/components/ui/ContactStrip';
-import { Container } from '@/components/ui/Container';
-import { CONFIG } from '@/lib/config';
-import { track } from '@/lib/analytics';
+"use client";
+import { useState } from "react";
+import LoadingGate from "@/app/components/LoadingGate";
+import Navbar from "@/app/components/Navbar";
+import Hero from "@/app/components/Hero";
+import CategoryGrid from "@/app/components/CategoryGrid";
+import AboutSection from "@/app/components/AboutSection";
+import MediaShowcase from "@/app/components/MediaShowcase";
+import StoreFlow from "@/app/components/StoreFlow";
+import ContactStrip from "@/app/components/ContactStrip";
+import Footer from "@/app/components/Footer";
 
-export default function HomePage() {
-  useEffect(() => {
-    track('view_home');
-  }, []);
+export default function LandingPage() {
+  const [gateDone, setGateDone] = useState(false);
+  const [logoMounted, setLogoMounted] = useState(false);
 
   return (
     <>
-      <Splash />
-      <Navbar />
-      <PromoBar text={CONFIG.promoBar} />
+      {!gateDone && (
+        <LoadingGate
+          onDone={() => setGateDone(true)}
+          setLogoMounted={setLogoMounted}
+        />
+      )}
+      <Navbar logoMounted={logoMounted} />
       <main>
         <Hero />
-        <Container>
-          <section id="about" className="py-16">
-            <AboutTiles />
-          </section>
-          <section id="featured" className="py-16">
-            <Featured />
-          </section>
-          <section id="media" className="py-16">
-            <Gallery />
-          </section>
-          <section id="newsletter" className="py-16">
-            <Newsletter />
-          </section>
-        </Container>
+        <CategoryGrid />
+        <AboutSection />
+        <MediaShowcase />
+        {/* <StoreFlow /> */}
+        <ContactStrip />
       </main>
-      <ContactStrip />
       <Footer />
     </>
   );

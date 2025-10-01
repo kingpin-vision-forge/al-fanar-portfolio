@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" role="img" aria-labelledby="title desc">
+  <title id="title">Alfanar Placeholder Logo</title>
+  <desc id="desc">Simple placeholder logo for the Alfanar brand</desc>
+  <rect width="160" height="40" fill="#111827" rx="8" />
+  <text x="50%" y="55%" fill="#F9FAFB" font-family="'Inter', Arial, sans-serif" font-size="18" text-anchor="middle">
+    ALFANAR
+  </text>
+</svg>
