@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${cormorant.variable} flex min-h-screen flex-col`}>
+      <body suppressHydrationWarning={true} className={`${inter.variable} ${cormorant.variable} flex min-h-screen flex-col`}>
         <SiteBackground />
         {children}
       </body>

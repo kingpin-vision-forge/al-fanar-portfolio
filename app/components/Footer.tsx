@@ -38,7 +38,7 @@ const footerNav = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[color:var(--brand-line)] bg-gradient-to-b from-[#A8A3A2] to-[#f0ebe3] text-sm text-[#4a4a4a]">
+<footer className="border-t border-[color:var(--brand-line)] bg-gradient-to-b from-[#f9d6d6] to-[#f0ebe3] text-sm text-[#4a4a4a]">
       <div className="mx-auto flex w-full gap-8 px-0 py-20 justify-center">
         <div className="space-y-5">
           <div className="serif text-2xl font-semibold tracking-[0.25em] text-[#1b1b1b]">

@@ -23,7 +23,7 @@ export default function ContactStrip() {
             <Link
               key={channel.value}
               href={channel.href}
-              className="rounded-[28px] border border-white/20 px-6 py-5 text-left text-sm text-[#2c2b2b] transition hover:border-white hover:bg-white hover:text-black break-words shadow-lg hover:shadow-xl bg-gradient-to-b from-[#A8A3A2] to-[#ede7e0]"
+className="rounded-[28px] border border-white/20 px-6 py-5 text-left text-sm text-[#2c2b2b] transition hover:border-white hover:bg-white hover:text-black break-words shadow-lg hover:shadow-xl bg-gradient-to-b from-[#f9d6d6] to-[#ede7e0]"
             >
               <p className="text-[10px] uppercase tracking-[0.4em] text-current/70">
                 {channel.label}
