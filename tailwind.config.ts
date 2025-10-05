@@ -25,3 +25,9 @@ export default {
     },
     plugins: [],
 } satisfies Config;
+module.exports = {
+    // ... your existing config
+    plugins: [
+      require("tailwindcss-animate"),
+    ],
+  }

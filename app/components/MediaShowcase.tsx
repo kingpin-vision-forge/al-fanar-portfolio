@@ -10,17 +10,17 @@ export default function MediaShowcase() {
       className="mx-auto max-w-6xl px-6 py-24"
       aria-labelledby="media-heading"
     >
-      <div className="flex flex-col gap-5 pb-12">
-        <span className="text-[11px] uppercase tracking-[0.45em] text-[#7b7b7b]">
+      <div className="text-center mb-12">
+        <span className="text-[11px] uppercase tracking-[0.45em] text-[#2c2b2b]">
           Media & Gallery
         </span>
         <h2
           id="media-heading"
-          className="serif text-4xl font-semibold text-[#1b1b1b] md:text-5xl"
+          className="serif text-4xl font-semibold text-[#1b1b1b] md:text-5xl mt-4"
         >
           Press spotlights on our maison moments
         </h2>
-        <p className="max-w-2xl text-sm leading-relaxed text-[#4a4a4a]">
+        <p className="max-w-2xl text-sm leading-relaxed text-[#4a4a4a] mx-auto mt-7">
           From architectural unveilings to artisan collaborations, discover the
           narratives defining the Alfanar Enterprises world across luxury media.
         </p>
@@ -41,7 +41,7 @@ export default function MediaShowcase() {
                 backgroundPosition: "center",
               }}
             />
-            <div className="space-y-4 p-7">
+            <div className="space-y-4 p-7 text-center">
               <h3 className="serif text-xl font-semibold text-[#1b1b1b]">
                   {feature.title}
               </h3>
@@ -50,7 +50,7 @@ export default function MediaShowcase() {
               </p>
               <motion.span
                 aria-hidden="true"
-                className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-[#1b1b1b]"
+                className="inline-flex items-center justify-center gap-3 text-[11px] uppercase tracking-[0.4em] text-[#1b1b1b]"
                 whileHover={{ x: 6 }}
               >
                 View feature →

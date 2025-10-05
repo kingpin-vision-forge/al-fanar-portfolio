@@ -34,30 +34,31 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
         >
           <motion.div
             layoutId="alfanarenterprises-logo"
-            className="relative flex h-28 w-48 items-center justify-center"
+            className="relative flex h-28 items-center justify-center"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 210, damping: 22 }}
           >
-            <span className="serif text-4xl font-semibold tracking-[0.2em] text-[#1b1b1b]">
-              {brand.name}
-            </span>
+            <div className="flex items-center">
+              <span className="serif text-4xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap">
+                {brand.name}
+              </span>
+              <div className="ml-4 h-12 overflow-hidden flex items-center" style={{ minWidth: '8rem' }}>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={step}
+                    initial={{ y: 16, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -16, opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    className="serif text-4xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap"
+                  >
+                    {loadingPhrases[step % loadingPhrases.length]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+            </div>
           </motion.div>
-
-          <div className="mt-6 h-6 overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={step}
-                initial={{ y: 16, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -16, opacity: 0 }}
-                transition={{ duration: 0.35 }}
-                className="text-xs uppercase tracking-[0.4em] text-zinc-500"
-              >
-                {`${brand.name} ${loadingPhrases[step % loadingPhrases.length]}`}
-              </motion.div>
-            </AnimatePresence>
-          </div>
         </motion.div>
       )}
     </AnimatePresence>

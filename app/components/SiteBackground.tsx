@@ -1,15 +1,30 @@
 "use client";
 import dynamic from "next/dynamic";
-import GradualBlur from "@/app/components/reactbits/GradualBlur";
+import GradualBlur from "@/components/GradualBlur";
+import { useEffect, useState } from "react";
 
 const Silk = dynamic(() => import("@/app/components/reactbits/SilkBg"), {
   ssr: false,
 });
 
 export default function SiteBackground() {
+  const [blurOpacity, setBlurOpacity] = useState(0.85);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollFraction = Math.min(scrollTop / docHeight, 1);
+      setBlurOpacity(0.85 * (1 - scrollFraction));
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <div className="fixed inset-0 -z-50 opacity-45">
+      <div className="fixed inset-0 -z-50 opacity-60">
         <Silk speed={5.5} scale={1.15} color="#7B7481" noiseIntensity={1.2} rotation={0.3} />
       </div>
       <GradualBlur
@@ -19,7 +34,7 @@ export default function SiteBackground() {
         strength={3.2}
         divCount={8}
         curve="bezier"
-        opacity={0.85}
+        opacity={blurOpacity}
         className="pointer-events-none"
       />
     </>

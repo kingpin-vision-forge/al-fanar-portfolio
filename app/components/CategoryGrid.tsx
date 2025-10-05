@@ -9,17 +9,17 @@ export default function CategoryGrid() {
       className="mx-auto max-w-6xl px-6 pb-24 pt-24"
       aria-labelledby="category-heading"
     >
-      <div className="flex flex-col gap-5 pb-12">
-        <span className="text-[11px] uppercase tracking-[0.45em] text-[#818181]">
+      <div className="flex flex-col gap-5 pb-12 text-center">
+        <span className="text-sm uppercase tracking-[0.45em] text-[#2c2b2b]">
           THREE REDIRECTIONS
         </span>
         <h2
           id="category-heading"
-          className="serif text-4xl font-semibold text-[#1b1b1b] md:text-5xl"
+          className="serif text-5xl font-semibold text-[#1b1b1b] md:text-6xl"
         >
           Tailored universes crafted with couture precision
         </h2>
-        <p className="max-w-2xl text-sm leading-relaxed text-[#4a4a4a]">
+        <p className="max-w-2xl text-base leading-relaxed text-[#4a4a4a] mx-auto">
           Inspired by the icons of Indian luxury — Raymond, Biba and FirstCry —
           each capsule mixes signature silhouettes with the Alfanar Enterprises touch.
         </p>
@@ -32,7 +32,7 @@ export default function CategoryGrid() {
               whileHover={{ y: -6 }}
               className="space-y-5"
             >
-              <div className="relative h-[22rem] overflow-hidden rounded-[36px] bg-[#f0e7da]">
+              <div className="relative h-[22rem] overflow-hidden rounded-[36px] bg-[#f0e7da] shadow-lg">
                 <div
                   className="absolute inset-0 transition duration-[1200ms] group-hover:scale-105"
                   style={{
@@ -44,7 +44,7 @@ export default function CategoryGrid() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(255,255,255,0.25),transparent_60%)]" />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 text-center">
                 <p className="text-[11px] uppercase tracking-[0.4em] text-[#808080]">
                   {card.title}
                 </p>

@@ -45,7 +45,7 @@ export const categoryCards = [
     title: "Men’s (Trendy)",
     tagline: "Structured luxury with Raymond references.",
     image:
-      "https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=1200&q=80",
+      "https://i.pinimg.com/736x/93/65/ae/9365ae13fe2fb699f1c3dbbdfb5ba27a.jpg",
     to: "/mens",
     palette: "#0f172a",
   },
@@ -54,7 +54,7 @@ export const categoryCards = [
     title: "Women’s (Modesty)",
     tagline: "Elegant layers and artisanal embroideries à la Biba.",
     image:
-      "https://images.unsplash.com/photo-1521579971123-1192931a1452?auto=format&fit=crop&w=1200&q=80",
+      "https://muslimmamas.com/wp-content/uploads/2021/06/the-choice-of-two-women_t20_P02pp7.webp",
     to: "/womens",
     palette: "#6b143b",
   },
@@ -63,7 +63,7 @@ export const categoryCards = [
     title: "Children’s (Colours)",
     tagline: "Play-proof palettes inspired by FirstCry.",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
+      "https://img.freepik.com/free-photo/full-shot-kids-posing-together_23-2149853383.jpg?semt=ais_hybrid&w=740&q=80",
     to: "/children",
     palette: "#ef4444",
   },
@@ -194,21 +194,21 @@ export const mediaFeatures = [
     title: "Colaba townhouse launch",
     excerpt: "Architectural Digest India tours our heritage-rich Mumbai flagship.",
     image:
-      "https://images.unsplash.com/photo-1520854221050-0f4caff449fb?auto=format&fit=crop&w=1200&q=80",
+      "https://thevou.com/wp-content/uploads/2025/06/Business-Professional-Attire-Men-696x1044.jpg",
     href: "/media/colaba-townhouse",
   },
   {
     title: "A modestwear renaissance",
     excerpt: "Vogue India covers our Eid capsule made with artisan zari ateliers.",
     image:
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80",
+      "https://i.pinimg.com/736x/f1/cc/cf/f1cccf9944994f52109e47316233633c.jpg",
     href: "/media/modesty-edit",
   },
   {
     title: "Colour Lab for kids",
     excerpt: "FirstCry charts the science behind our stain-resistant play sets.",
     image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
+      "https://www.shutterstock.com/image-photo/group-image-asian-children-having-600nw-2335173819.jpg",
     href: "/media/colour-lab",
   },
 ];
@@ -228,5 +228,10 @@ export const contactChannels = [
     label: "Follow our drops",
     value: "@alfanarenterprises.official",
     href: "https://instagram.com/alfanarenterprises.official",
+  },
+  {
+    label: "Address",
+    value: "123 Fashion Street, New York, NY 10001 • Open daily 10:00 – 21:00",
+    href: "#address",
   },
 ];
