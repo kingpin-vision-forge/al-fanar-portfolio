@@ -16,16 +16,10 @@ export const metadata: Metadata = {
     "Discover the Alfanar Enterprises landing page: men’s tailoring, women’s modesty and playful kidswear crafted for modern families.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${cormorant.variable} bg-[#f6f1e8] text-[#1b1b1b] antialiased selection:bg-[#1b1b1b] selection:text-white`}
-      >
+      <body className={`${inter.variable} ${cormorant.variable} flex min-h-screen flex-col`}>
         <SiteBackground />
         {children}
       </body>

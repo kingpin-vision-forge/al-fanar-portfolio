@@ -1,0 +1,4 @@
+- [x] Change static text to "Alfanar Enterprises"
+- [x] Change shifting text to just the phrase (e.g., "is Comfort")
+- [x] Place them side by side in the same line
+- [x] Make shifting text same font and size as static

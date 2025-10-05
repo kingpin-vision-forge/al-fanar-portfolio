@@ -7,16 +7,13 @@ const navItems = [
   { label: "Men", href: "#mens" },
   { label: "Women", href: "#womens" },
   { label: "Children", href: "#children" },
-  { label: "About", href: "#about" },
-  { label: "Media", href: "#media" },
-  { label: "Stores", href: "#stores" },
-  { label: "Contact", href: "#contact" },
+
 ];
 
 export default function Navbar({ logoMounted }: { logoMounted: boolean }) {
   return (
-    <div className="sticky top-0 z-40 border-b border-[color:var(--brand-line)] bg-[#f6f1e8]/90 backdrop-blur">
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+    <div className="sticky top-0 z-40 border-b border-[color:var(--brand-line)] backdrop-blur">
+      <div className="flex h-20 items-center justify-between px-6">
         <motion.div layoutId="alfanarenterprises-logo" className="relative">
           <motion.span
             initial={false}
@@ -28,7 +25,7 @@ export default function Navbar({ logoMounted }: { logoMounted: boolean }) {
           </motion.span>
         </motion.div>
 
-        <nav className="hidden items-center gap-8 text-[11px] uppercase tracking-[0.4em] text-[#7a7a7a] md:flex">
+        <nav className="hidden absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-4 text-[11px] uppercase tracking-[0.4em] text-[#2c2b2b] md:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -40,7 +37,7 @@ export default function Navbar({ logoMounted }: { logoMounted: boolean }) {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 md:flex ml-auto">
           <Link
             href="/login-signup"
             className="rounded-full border border-[color:var(--brand-line)] px-5 py-2 text-[11px] uppercase tracking-[0.4em] text-[#1b1b1b] transition hover:border-[#1b1b1b]"

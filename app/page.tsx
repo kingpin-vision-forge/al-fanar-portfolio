@@ -9,6 +9,7 @@ import MediaShowcase from "@/app/components/MediaShowcase";
 import StoreFlow from "@/app/components/StoreFlow";
 import ContactStrip from "@/app/components/ContactStrip";
 import Footer from "@/app/components/Footer";
+import FadeInOnScroll from "@/app/components/FadeInOnScroll";
 
 export default function LandingPage() {
   const [gateDone, setGateDone] = useState(false);
@@ -23,13 +24,23 @@ export default function LandingPage() {
         />
       )}
       <Navbar logoMounted={logoMounted} />
-      <main>
-        <Hero />
-        <CategoryGrid />
-        <AboutSection />
-        <MediaShowcase />
+      <main className="w-full max-w-7xl mx-auto px-4">
+        <FadeInOnScroll>
+          <Hero />
+        </FadeInOnScroll>
+        <FadeInOnScroll>
+          <CategoryGrid />
+        </FadeInOnScroll>
+        <FadeInOnScroll>
+          <AboutSection />
+        </FadeInOnScroll>
+        <FadeInOnScroll>
+          <MediaShowcase />
+        </FadeInOnScroll>
         {/* <StoreFlow /> */}
-        <ContactStrip />
+        <FadeInOnScroll>
+          <ContactStrip />
+        </FadeInOnScroll>
       </main>
       <Footer />
     </>
