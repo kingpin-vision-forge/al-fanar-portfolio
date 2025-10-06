@@ -40,18 +40,18 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
             transition={{ type: "spring", stiffness: 210, damping: 22 }}
           >
             <div className="flex items-center">
-              <span className="serif text-4xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap">
+              <span className="serif text-4xl font-extrabold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap font-[Lora, serif]">
                 {brand.name}
               </span>
-              <div className="ml-4 h-12 overflow-hidden flex items-center" style={{ minWidth: '8rem' }}>
+              <div className="ml-4 h-12 overflow-visible flex items-center" style={{ width: '14rem' }}>
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={step}
-                    initial={{ y: 16, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -16, opacity: 0 }}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 4, opacity: 1 }}
+                    exit={{ y: -12, opacity: 0 }}
                     transition={{ duration: 0.35 }}
-                    className="serif text-4xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap"
+                    className="serif text-3xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap w-full text-left font-[Georgia, serif]"
                   >
                     {loadingPhrases[step % loadingPhrases.length]}
                   </motion.span>

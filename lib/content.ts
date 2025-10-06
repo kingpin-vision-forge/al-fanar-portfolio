@@ -9,7 +9,7 @@ export const loadingPhrases = [
   "is Comfort",
   "is Style",
   "is Beauty",
-  "is Customer Satifaction",
+  "is Customer Satisfaction",
 ];
 
 export const heroBanners = [
