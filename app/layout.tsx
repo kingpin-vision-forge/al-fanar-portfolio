@@ -1,12 +1,17 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Manrope, Playfair_Display } from "next/font/google";
 import SiteBackground from "@/app/components/SiteBackground";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const cormorant = Cormorant_Garamond({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-serif",
 });
 
@@ -19,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={`${inter.variable} ${cormorant.variable} flex min-h-screen flex-col`}>
+      <body suppressHydrationWarning={true} className={`${manrope.variable} ${playfair.variable} flex min-h-screen flex-col`}>
         <SiteBackground />
         {children}
       </body>

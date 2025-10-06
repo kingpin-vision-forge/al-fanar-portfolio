@@ -1,24 +1,45 @@
 import { heroBanners } from "@/lib/content";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-export default function Hero() {
+type HeroProps = {
+  className?: string;
+};
+
+export default function Hero({ className }: HeroProps) {
   return (
-    <section className="mx-auto max-w-6xl px-6 pb-24 pt-24" id="top">
-      <div className="flex flex-col gap-5 pb-20 text-center">
+    <section
+      id="top"
+      className={cn(
+        "relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-white/80 px-6 py-28",
+        "shadow-[0_35px_120px_-60px_rgba(17,17,17,0.25)] backdrop-blur-sm",
+        className,
+      )}
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+      />
+
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 text-center">
         <span className="text-sm uppercase tracking-[0.45em] text-[#2d3748]">
           Our Collections
         </span>
         <h2 className="serif text-5xl font-semibold text-[#1b1b1b] md:text-6xl">
           Discover Alfanar Enterprises
         </h2>
-        <p className="max-w-2xl text-base leading-relaxed text-[#4a4a4a] mx-auto">
+        <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#4a4a4a]">
           Explore our tailored universes crafted with couture precision for every family member.
         </p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className="mx-auto grid w-full max-w-5xl gap-8 md:grid-cols-3">
         {heroBanners.map(({ headline, sub, cta }) => (
-          <div key={headline} className="space-y-2 text-center">
+          <div key={headline} className="space-y-3 rounded-[32px] border border-[color:var(--brand-line)]/60 bg-white/80 p-8 text-center shadow-[0_18px_60px_rgba(15,15,15,0.05)]">
             <h3 className="serif text-3xl font-semibold text-[#1b1b1b]">{headline}</h3>
             <p className="text-base leading-relaxed text-[#4c4c4c]">{sub}</p>
             <Link

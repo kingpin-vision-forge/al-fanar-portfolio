@@ -1,4 +1,4 @@
-// File: C:\Users\zayan\OneDrive\Desktop\GitCloneRepo\al-fanar-portfolio\app\page.tsx
+// File: /Users/niyazahamadherkal/Documents/personal work/Alfanar Portfolio/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

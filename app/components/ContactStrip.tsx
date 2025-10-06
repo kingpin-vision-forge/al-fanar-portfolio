@@ -1,29 +1,47 @@
 "use client";
 import Link from "next/link";
 import { contactChannels } from "@/lib/content";
+import { cn } from "@/lib/utils";
 
-export default function ContactStrip() {
+type ContactStripProps = {
+  className?: string;
+};
+
+export default function ContactStrip({ className }: ContactStripProps) {
   return (
     <section
       id="contact"
-      className="border-t border-[color:var(--brand-line)] bg-transparent"
       aria-labelledby="contact-heading"
+      className={cn(
+        "relative flex min-h-screen w-full items-center justify-center overflow-hidden border-y border-[color:var(--brand-line)] bg-gradient-to-b from-white/80 via-white/60 to-white/80 px-6 py-28",
+        "shadow-[0_45px_140px_-80px_rgba(20,20,20,0.4)] backdrop-blur",
+        className,
+      )}
     >
-      <div className="flex flex-col gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between text-white">
-        <div className="space-y-3">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+      />
+
+      <div className="flex w-full max-w-6xl flex-col gap-12 rounded-[36px] border border-[color:var(--brand-line)]/70 bg-white/90 px-8 py-16 shadow-[0_32px_70px_rgba(18,18,18,0.09)] backdrop-blur-lg md:px-12 md:py-20 md:flex-row md:items-center md:justify-between">
+        <div className="space-y-4 text-[#1a1a1a]">
           <span className="text-[11px] uppercase tracking-[0.45em] text-[#2c2b2b]">
             Contact
           </span>
-          <h2 id="contact-heading" className="serif text-3xl font-semibold text-[#1a1a1a]">
+          <h2 id="contact-heading" className="serif text-4xl font-semibold">
             Concierge for every wardrobe question
           </h2>
         </div>
-        <div className="grid gap-4 md:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-4">
           {contactChannels.map((channel) => (
             <Link
               key={channel.value}
               href={channel.href}
-className="rounded-[28px] border border-white/20 px-6 py-5 text-left text-sm text-[#2c2b2b] transition hover:border-white hover:bg-white hover:text-black break-words shadow-lg hover:shadow-xl bg-gradient-to-b from-[#f9d6d6] to-[#ede7e0]"
+              className="rounded-[28px] border border-[color:var(--brand-line)]/60 bg-gradient-to-b from-[#f9d6d6] to-[#ede7e0] px-6 py-5 text-left text-sm text-[#2c2b2b] shadow-[0_18px_55px_rgba(20,20,20,0.1)] transition hover:-translate-y-1 hover:border-[color:var(--brand-line)] hover:text-black"
             >
               <p className="text-[10px] uppercase tracking-[0.4em] text-current/70">
                 {channel.label}

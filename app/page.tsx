@@ -6,7 +6,6 @@ import Hero from "@/app/components/Hero";
 import CategoryGrid from "@/app/components/CategoryGrid";
 import AboutSection from "@/app/components/AboutSection";
 import MediaShowcase from "@/app/components/MediaShowcase";
-import StoreFlow from "@/app/components/StoreFlow";
 import ContactStrip from "@/app/components/ContactStrip";
 import Footer from "@/app/components/Footer";
 import FadeInOnScroll from "@/app/components/FadeInOnScroll";
@@ -24,21 +23,21 @@ export default function LandingPage() {
         />
       )}
       <Navbar logoMounted={logoMounted} />
-      <main className="w-full max-w-7xl mx-auto px-4">
-        <FadeInOnScroll>
+      <main className="relative flex w-full flex-col overflow-hidden">
+        <FadeInOnScroll className="h-full w-full">
           <Hero />
         </FadeInOnScroll>
-        <FadeInOnScroll>
+        <FadeInOnScroll className="h-full w-full">
           <CategoryGrid />
         </FadeInOnScroll>
-        <FadeInOnScroll>
+        <FadeInOnScroll className="h-full w-full">
           <AboutSection />
         </FadeInOnScroll>
-        <FadeInOnScroll>
+        <FadeInOnScroll className="h-full w-full">
           <MediaShowcase />
         </FadeInOnScroll>
         {/* <StoreFlow /> */}
-        <FadeInOnScroll>
+        <FadeInOnScroll className="h-full w-full">
           <ContactStrip />
         </FadeInOnScroll>
       </main>
