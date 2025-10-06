@@ -15,9 +15,9 @@ interface GradualBlurProps {
 
 export default function GradualBlur({
   position = "bottom",
-  height = "8rem",
+  height = "3rem",
   strength = 8,
-  opacity = 0.2,
+  opacity = 0.1,  // Reduced opacity from 0.2 to 0.1 to reduce fixed blur
   className = "",
 }: GradualBlurProps) {
   const { scrollYProgress } = useScroll();

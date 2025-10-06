@@ -11,6 +11,7 @@ type CategoryGridProps = {
 export default function CategoryGrid({ className }: CategoryGridProps) {
   return (
     <section
+      id="brands"
       aria-labelledby="category-heading"
       className={cn(
         "relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-white/70 px-6 py-28",
@@ -45,7 +46,7 @@ export default function CategoryGrid({ className }: CategoryGridProps) {
 
       <div className="mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-3">
         {categoryCards.map((card) => (
-          <Link key={card.slug} id={card.slug} href={card.to} className="group">
+          <Link key={card.slug} href="/brands" className="group">
             <motion.div
               whileHover={{ y: -6 }}
               className="space-y-5 rounded-[36px] border border-[color:var(--brand-line)]/60 bg-white/85 p-6 shadow-[0_22px_60px_rgba(16,16,16,0.06)] transition duration-500"
