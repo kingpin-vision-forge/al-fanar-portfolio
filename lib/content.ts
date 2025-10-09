@@ -2,7 +2,39 @@ export const brand = {
   name: "Alfanar Enterprises",
   strapline: "One brand, three style universes for the modern family.",
   description:
-    "Tailored confidence for men, graceful layers for women, and playful colour stories for kids — all under one roof.",
+    "Trendy confidence for men, modesty-first layers for women, and playful colours for kids — all under one roof.",
+  universes: [
+    {
+      key: "mens",
+      label: "Trendy",
+      title: "Trendy — Men",
+      blurb:
+        "Structured, contemporary suiting and elevated everydaywear for the style-forward man. Clean lines, modern fits and thoughtful detailing.",
+      example: "Tailored blazers, tapered trousers, statement knits",
+      cta: { label: "Explore Men", href: "/mens" },
+      palette: "#0f172a",
+    },
+    {
+      key: "womens",
+      label: "Modesty",
+      title: "Modesty — Women",
+      blurb:
+        "Graceful silhouettes and layered modestwear that honour tradition with modern sensibilities. Lightweight fabrics and artisanal finishes.",
+      example: "Flowing tunics, embroidered overlays, layered dresses",
+      cta: { label: "Explore Women", href: "/womens" },
+      palette: "#6b143b",
+    },
+    {
+      key: "children",
+      label: "Colours",
+      title: "Colours — Kids",
+      blurb:
+        "Vibrant, play-ready pieces in durable, easy-care fabrics. Bold palettes and joyful prints designed for everyday adventures.",
+      example: "Bright sets, playful prints, stain-resistant playwear",
+      cta: { label: "Explore Kids", href: "/children" },
+      palette: "#ef4444",
+    },
+  ],
 };
 
 export const loadingPhrases = [
@@ -16,7 +48,7 @@ export const heroBanners = [
   {
     image:
       "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=2000&q=80",
-    headline: "Tailored for the Icons",
+    headline: "Trendy for the Icons",
     sub: "Raymond-inspired suiting, reworked for today's silhouettes.",
     cta: { label: "Explore Men", href: "/mens" },
     tone: "#0f172a",
