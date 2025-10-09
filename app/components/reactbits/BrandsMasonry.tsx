@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -85,13 +86,15 @@ export default function BrandsMasonry({ items }: Props) {
                 target.style.boxShadow = "0 0 0 rgba(0, 0, 0, 0)";
               }}
             >
-              <img
-                src={item.img}
-                alt=""
-                style={{ height: item.height }}
-                className="w-full object-cover rounded-lg"
-                loading="lazy"
-              />
+              <div className="relative w-full overflow-hidden rounded-lg" style={{ height: item.height }}>
+                <Image
+                  src={item.img}
+                  alt={`Brand highlight ${item.id}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                />
+              </div>
             </a>
           ))}
         </div>

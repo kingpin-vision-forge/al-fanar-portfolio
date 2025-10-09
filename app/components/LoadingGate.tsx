@@ -22,7 +22,7 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
       clearInterval(tick);
       clearTimeout(total);
     };
-  }, []);
+  }, [onDone, setLogoMounted]);
 
   return (
     <AnimatePresence>
