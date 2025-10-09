@@ -22,7 +22,7 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
       clearInterval(tick);
       clearTimeout(total);
     };
-  }, [onDone, setLogoMounted]);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -47,11 +47,11 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={step}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 4, opacity: 1 }}
-                    exit={{ y: -12, opacity: 0 }}
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 20, opacity: 1 }}
+                    exit={{ y: 0, opacity: 0 }}
                     transition={{ duration: 0.35 }}
-                    className="serif text-3xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap w-full text-left font-[Georgia, serif]"
+                    className="serif text-2xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap w-full text-left font-[Georgia, serif]"
                   >
                     {loadingPhrases[step % loadingPhrases.length]}
                   </motion.span>

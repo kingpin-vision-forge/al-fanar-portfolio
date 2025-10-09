@@ -3,6 +3,100 @@ import { mediaFeatures } from "@/lib/content";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import BrandsMasonry from "@/app/components/reactbits/BrandsMasonry";
+
+const masonryItems = [
+  {
+    id: "1",
+    img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-close-up-of-a-watch-on-a-black-surface-H-d_3_8L-s",
+    height: 400,
+  },
+  {
+    id: "2",
+    img: "https://i.pinimg.com/736x/93/65/ae/9365ae13fe2fb699f1c3dbbdfb5ba27a.jpg",
+    url: "https://unsplash.com/photos/a-pair-of-red-and-white-nike-sneakers-on-a-white-surface-164_6wVEHfI",
+    height: 300,
+  },
+  {
+    id: "3",
+    img: "https://i.pinimg.com/736x/93/65/ae/9365ae13fe2fb699f1c3dbbdfb5ba27a.jpg",
+    url: "https://unsplash.com/photos/a-pair-of-headphones-sitting-on-top-of-a-white-surface-g-a-y-C-g-a-A",
+    height: 350,
+  },
+  {
+    id: "4",
+    img: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1780&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-pair-of-sunglasses-sitting-on-top-of-a-pink-surface-PDX_a_82obo",
+    height: 450,
+  },
+  {
+    id: "5",
+    img: "https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?q=80&w=1964&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-person-with-a-backpack-on-standing-in-a-canyon-j-G-4-Z-c-f-Q",
+    height: 400,
+  },
+  {
+    id: "6",
+    img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=2000&q=80",
+    url: "https://unsplash.com/photos/a-pair-of-headphones-sitting-on-top-of-a-white-surface-g-a-y-C-g-a-A",
+    height: 350,
+  },
+  {
+    id: "7",
+    img: "https://images.unsplash.com/photo-1560343090-f0409e92791a?q=80&w=1964&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-pair-of-brown-leather-shoes-sitting-on-top-of-a-wooden-floor-E-S-I-C-U-p-B-w-A",
+    height: 400,
+  },
+  {
+    id: "8",
+    img: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1974&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-bottle-of-perfume-on-a-white-surface-W-p-D-x-X-k-E-g",
+    height: 350,
+  },
+  {
+    id: "9",
+    img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1968&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-book-and-a-pair-of-glasses-on-a-table-g-F-L-h-G-v-k-A",
+    height: 350,
+  },
+  {
+    id: "10",
+    img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1964&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-mountain-landscape-with-a-lake-in-the-foreground-1",
+    height: 400,
+  },
+  {
+    id: "11",
+    img: "https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=1964&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-forest-path-covered-in-fallen-leaves-2",
+    height: 350,
+  },
+  {
+    id: "12",
+    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1964&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-close-up-of-a-leaf-with-water-drops-3",
+    height: 350,
+  },
+  {
+    id: "13",
+    img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1964&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-person-walking-on-a-path-in-the-woods-4",
+    height: 400,
+  },
+  {
+    id: "14",
+    img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1964&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-mountain-range-with-a-lake-in-the-foreground-5",
+    height: 350,
+  },
+  {
+    id: "15",
+    img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1964&auto=format&fit=crop",
+    url: "https://unsplash.com/photos/a-person-standing-on-a-cliff-overlooking-the-ocean-6",
+    height: 400,
+  },
+];
 
 type MediaShowcaseProps = {
   className?: string;
@@ -78,6 +172,8 @@ export default function MediaShowcase({ className }: MediaShowcaseProps) {
           </Link>
         ))}
         </div>
+
+        <BrandsMasonry items={masonryItems} />
       </div>
     </section>
   );

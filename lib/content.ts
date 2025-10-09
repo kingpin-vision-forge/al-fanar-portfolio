@@ -235,3 +235,80 @@ export const contactChannels = [
     href: "#address",
   },
 ];
+
+export const brandGalleryItems = [
+  {
+    id: 1,
+    img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop",
+    width: 1999,
+    height: 1333,
+    url: "https://unsplash.com/photos/a-close-up-of-a-watch-on-a-black-surface-H-d_3_8L-s",
+  },
+  {
+    id: 2,
+    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ab?q=80&w=2070&auto=format&fit=crop",
+    width: 2070,
+    height: 1380,
+    url: "https://unsplash.com/photos/a-pair-of-red-and-white-nike-sneakers-on-a-white-surface-164_6wVEHfI",
+  },
+  {
+    id: 3,
+    img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop",
+    width: 2070,
+    height: 1380,
+    url: "https://unsplash.com/photos/a-pair-of-headphones-sitting-on-top-of-a-white-surface-g-a-y-C-g-a-A",
+  },
+  {
+    id: 4,
+    img: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1780&auto=format&fit=crop",
+    width: 1780,
+    height: 1187,
+    url: "https://unsplash.com/photos/a-pair-of-sunglasses-sitting-on-top-of-a-pink-surface-PDX_a_82obo",
+  },
+  {
+    id: 5,
+    img: "https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?q=80&w=1964&auto=format&fit=crop",
+    width: 1964,
+    height: 2946,
+    url: "https://unsplash.com/photos/a-person-with-a-backpack-on-standing-in-a-canyon-j-G-4-Z-c-f-Q",
+  },
+  {
+    id: 6,
+    img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1974&auto=format&fit=crop",
+    width: 1974,
+    height: 1316,
+    url: "https://unsplash.com/photos/a-blue-and-white-playstation-5-controller-on-a-white-surface-y-L-p-W-z-h-Q-k",
+  },
+  {
+    id: 7,
+    img: "https://images.unsplash.com/photo-1560343090-f0409e92791a?q=80&w=1964&auto=format&fit=crop",
+    width: 1964,
+    height: 2946,
+    url: "https://unsplash.com/photos/a-pair-of-brown-leather-shoes-sitting-on-top-of-a-wooden-floor-E-S-I-C-U-p-B-w-A",
+  },
+  {
+    id: 8,
+    img: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1974&auto=format&fit=crop",
+    width: 1974,
+    height: 1316,
+    url: "https://unsplash.com/photos/a-bottle-of-perfume-on-a-white-surface-W-p-D-x-X-k-E-g",
+  },
+  {
+    id: 9,
+    img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1968&auto=format&fit=crop",
+    width: 1968,
+    height: 1312,
+    url: "https://unsplash.com/photos/a-book-and-a-pair-of-glasses-on-a-table-g-F-L-h-G-v-k-A",
+  },
+  {
+    id: 10,
+    img: "https://images.unsplash.com/photo-1550009158-94ae76552485?q=80&w=1887&auto=format&fit=crop",
+    width: 1887,
+    height: 2831,
+    url: "https://unsplash.com/photos/a-camera-sitting-on-top-of-a-wooden-table-Y-V-Z-y-O-a-A-g",
+  },
+  {
+    id: 11,
+    img: "https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=20",
+  },
+];
