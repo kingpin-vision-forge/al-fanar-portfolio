@@ -22,7 +22,7 @@ export default function LandingPage() {
           setLogoMounted={setLogoMounted}
         />
       )}
-      <Navbar logoMounted={logoMounted} />
+      <Navbar logoMounted={logoMounted} visible={gateDone} />
       <main className="relative flex w-full flex-col overflow-hidden">
         <FadeInOnScroll className="h-full w-full">
           <Hero />

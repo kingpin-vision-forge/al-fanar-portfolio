@@ -30,7 +30,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
       <div className="mx-auto w-full max-w-6xl px-2 text-[#1b1b1b]">
         <div className="mb-16 text-center">
           <span className="text-sm uppercase tracking-[0.45em] text-[#2d3748]">
-            About Alfanar Enterprises
+            About Alfanar
           </span>
           <h2
             id="about-heading"

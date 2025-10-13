@@ -5,22 +5,60 @@ import { brand, loadingPhrases } from "@/lib/content";
 
 type Props = { onDone: () => void; setLogoMounted: (b: boolean) => void };
 
+const PHRASE_DURATION_MS = 1200;
+const EXIT_DURATION_MS = 1500;
+
 export default function LoadingGate({ onDone, setLogoMounted }: Props) {
   const [step, setStep] = useState(0);
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
-    const tick = setInterval(() => setStep((s) => s + 1), 900);
-    const total = setTimeout(() => {
+    setStep(0);
+    setExiting(false);
+
+    if (!loadingPhrases.length) {
+      setLogoMounted(true);
+      onDone();
+      return;
+    }
+
+    let tickId: ReturnType<typeof setInterval> | null = null;
+    let exitTimeout: ReturnType<typeof setTimeout> | null = null;
+    let finalizeTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    const startExit = () => {
       setExiting(true);
-      setTimeout(() => {
+      finalizeTimeout = setTimeout(() => {
         setLogoMounted(true);
         onDone();
-      }, 700);
-    }, loadingPhrases.length * 1000 + 800);
+      }, EXIT_DURATION_MS);
+    };
+
+    if (loadingPhrases.length > 1) {
+      let current = 0;
+      tickId = setInterval(() => {
+        current += 1;
+
+        setStep((prev) => Math.min(prev + 1, loadingPhrases.length - 1));
+
+        if (current >= loadingPhrases.length - 1) {
+          if (tickId) {
+            clearInterval(tickId);
+            tickId = null;
+          }
+          if (!exitTimeout) {
+            exitTimeout = setTimeout(startExit, PHRASE_DURATION_MS);
+          }
+        }
+      }, PHRASE_DURATION_MS);
+    } else {
+      exitTimeout = setTimeout(startExit, PHRASE_DURATION_MS);
+    }
+
     return () => {
-      clearInterval(tick);
-      clearTimeout(total);
+      if (tickId) clearInterval(tickId);
+      if (exitTimeout) clearTimeout(exitTimeout);
+      if (finalizeTimeout) clearTimeout(finalizeTimeout);
     };
   }, [onDone, setLogoMounted]);
 
@@ -47,10 +85,10 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={step}
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 20, opacity: 1 }}
-                    exit={{ y: 0, opacity: 0 }}
-                    transition={{ duration: 0.35 }}
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 10, opacity: 1 }}
+                    exit={{ y: -10, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
                     className="serif text-2xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap w-full text-left font-[Georgia, serif]"
                   >
                     {loadingPhrases[step % loadingPhrases.length]}

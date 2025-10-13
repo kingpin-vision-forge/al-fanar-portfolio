@@ -1,5 +1,5 @@
 export const brand = {
-  name: "Alfanar Enterprises",
+  name: "Alfanar",
   strapline: "One brand, three style universes for the modern family.",
   description:
     "Trendy confidence for men, modesty-first layers for women, and playful colours for kids — all under one roof.",

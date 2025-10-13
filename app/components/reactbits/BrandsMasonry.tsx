@@ -17,6 +17,37 @@ type Props = {
   items: Item[];
 };
 
+function MasonryVisual({ item }: { item: Item }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return (
+      <div
+        className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-lg border border-[color:var(--brand-line)]/60 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.8),rgba(244,244,244,0.95))] px-6 text-center text-xs uppercase tracking-[0.3em] text-[#3a3a3a]"
+        style={{ height: item.height }}
+      >
+        <span className="text-[10px] uppercase tracking-[0.4em] text-[#959595]">
+          Image offline
+        </span>
+        <span className="text-sm">{item.id}</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full overflow-hidden rounded-lg" style={{ height: item.height }}>
+      <Image
+        src={item.img}
+        alt={`Brand highlight ${item.id}`}
+        fill
+        className="object-cover transition-transform duration-700 will-change-transform group-hover:scale-105"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+        onError={() => setHasError(true)}
+      />
+    </div>
+  );
+}
+
 export default function BrandsMasonry({ items }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [columns, setColumns] = useState(5);
@@ -65,14 +96,14 @@ export default function BrandsMasonry({ items }: Props) {
   return (
     <div ref={containerRef} className="flex gap-4">
       {cols.map((col, i) => (
-        <div key={i} className="flex flex-col gap-4 flex-1">
+        <div key={i} className="flex flex-1 flex-col gap-4">
           {col.map((item) => (
             <a
               key={item.id}
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block overflow-hidden rounded-lg shadow-lg will-change-transform"
+              className="group block overflow-hidden rounded-lg shadow-lg will-change-transform"
               onMouseEnter={(e) => {
                 const target = e.currentTarget;
                 target.style.transform = "translateY(-8px)";
@@ -86,15 +117,7 @@ export default function BrandsMasonry({ items }: Props) {
                 target.style.boxShadow = "0 0 0 rgba(0, 0, 0, 0)";
               }}
             >
-              <div className="relative w-full overflow-hidden rounded-lg" style={{ height: item.height }}>
-                <Image
-                  src={item.img}
-                  alt={`Brand highlight ${item.id}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-                />
-              </div>
+              <MasonryVisual item={item} />
             </a>
           ))}
         </div>
