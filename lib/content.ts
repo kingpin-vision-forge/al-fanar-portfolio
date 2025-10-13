@@ -74,7 +74,7 @@ export const heroBanners = [
 export const categoryCards = [
   {
     slug: "mens",
-    title: "Men’s (Trendy)",
+    title: "Trendy",
     tagline: "Structured luxury with Raymond references.",
     image:
       "https://i.pinimg.com/736x/93/65/ae/9365ae13fe2fb699f1c3dbbdfb5ba27a.jpg",
@@ -83,7 +83,7 @@ export const categoryCards = [
   },
   {
     slug: "womens",
-    title: "Women’s (Modesty)",
+    title: "Modesty",
     tagline: "Elegant layers and artisanal embroideries à la Biba.",
     image:
       "https://muslimmamas.com/wp-content/uploads/2021/06/the-choice-of-two-women_t20_P02pp7.webp",
@@ -92,7 +92,7 @@ export const categoryCards = [
   },
   {
     slug: "children",
-    title: "Children’s (Colours)",
+    title: "Colours",
     tagline: "Play-proof palettes inspired by FirstCry.",
     image:
       "https://img.freepik.com/free-photo/full-shot-kids-posing-together_23-2149853383.jpg?semt=ais_hybrid&w=740&q=80",
