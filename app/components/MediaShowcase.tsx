@@ -105,7 +105,7 @@ export default function MediaShowcase({ className }: MediaShowcaseProps) {
       id="media"
       aria-labelledby="media-heading"
       className={cn(
-        "relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-white/75 px-6 py-28",
+        "relative flex min-h-[80vh] md:min-h-screen w-full items-center justify-center overflow-hidden bg-white/75 px-6 py-16 md:py-28",
         "shadow-[0_40px_140px_-80px_rgba(18,18,18,0.4)] backdrop-blur-sm",
         className,
       )}
@@ -126,7 +126,7 @@ export default function MediaShowcase({ className }: MediaShowcaseProps) {
           </span>
           <h2
             id="media-heading"
-            className="serif text-4xl font-semibold text-[#1b1b1b] md:text-5xl mt-4"
+            className="serif text-2xl md:text-4xl lg:text-5xl font-semibold text-[#1b1b1b] mt-4"
           >
             Press spotlights on our maison moments
           </h2>

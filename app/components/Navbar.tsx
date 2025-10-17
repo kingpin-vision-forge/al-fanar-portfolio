@@ -46,6 +46,11 @@ export default function Navbar({
     };
   }, []);
 
+  useEffect(() => {
+    // Dispatch custom event to notify SiteBackground about menu state
+    window.dispatchEvent(new CustomEvent("menuToggle", { detail: menuOpen }));
+  }, [menuOpen]);
+
   return (
     <header
       className={cn(
@@ -120,66 +125,92 @@ export default function Navbar({
             aria-expanded={menuOpen}
             aria-label="Toggle navigation"
           >
-            <span
-              className={`block h-0.5 w-5 transform rounded-full bg-current transition duration-300 ${
-                menuOpen ? "translate-y-1.5 rotate-45" : "-translate-y-1.5"
-              }`}
-            />
-            <span
-              className={`mt-1 block h-0.5 w-5 transform rounded-full bg-current transition duration-300 ${
-                menuOpen ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`mt-1 block h-0.5 w-5 transform rounded-full bg-current transition duration-300 ${
-                menuOpen ? "-translate-y-1.5 -rotate-45" : "translate-y-1.5"
-              }`}
-            />
+            <div className="flex flex-col items-center justify-center space-y-1">
+              <span
+                className={`block h-0.5 w-5 transform rounded-full bg-current transition duration-300 ${
+                  menuOpen ? "rotate-45 translate-y-1.5" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-5 transform rounded-full bg-current transition duration-300 ${
+                  menuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-5 transform rounded-full bg-current transition duration-300 ${
+                  menuOpen ? "-rotate-45 -translate-y-1.5" : ""
+                }`}
+              />
+            </div>
           </button>
         </div>
       </div>
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="border-b border-[color:var(--brand-line)]/60 bg-white/90 shadow-[0_20px_50px_rgba(15,23,42,0.08)] backdrop-blur md:hidden"
-          >
-            <div className="flex flex-col gap-6 px-6 py-6 text-sm uppercase tracking-[0.35em] text-[#1b1b1b]">
-              {navItems.map((item) => (
-                <Link key={item.href} href={item.href} onClick={closeMenu}>
-                  {item.label}
-                </Link>
-              ))}
-              <div className="rounded-3xl border border-[color:var(--brand-line)]/70 bg-white/85 p-5 text-center text-[11px] tracking-[0.3em] text-[#2c2b2b] shadow-[0_18px_40px_rgba(18,18,18,0.08)]">
-                <div className="mb-3 flex justify-center text-[#1b1b1b]">
-                  <UserRound className="h-5 w-5" />
-                </div>
-                <p className="text-[10px] uppercase tracking-[0.4em] text-[#6b6b6b]">
-                  Member access
-                </p>
-                <div className="mt-4 flex gap-3">
-                  <Link
-                    href="/login-signup?mode=login"
-                    className="flex-1 rounded-full border border-[color:var(--brand-line)]/60 px-3 py-2 text-[#1b1b1b] transition hover:border-[#1b1b1b]"
-                    onClick={closeMenu}
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    href="/login-signup?mode=join"
-                    className="flex-1 rounded-full bg-[#1b1b1b] px-3 py-2 text-white transition hover:bg-[#121212]"
-                    onClick={closeMenu}
-                  >
-                    Join
-                  </Link>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm md:hidden"
+              onClick={closeMenu}
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="fixed top-0 right-0 z-40 h-full w-4/5 max-w-sm bg-white shadow-2xl md:hidden"
+            >
+              <div className="relative flex h-full flex-col px-6 py-8">
+                <button
+                  type="button"
+                  className="absolute top-6 right-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--brand-line)] text-[#1b1b1b] transition hover:border-[#1b1b1b]"
+                  onClick={closeMenu}
+                  aria-label="Close navigation"
+                >
+                  <div className="flex flex-col items-center justify-center space-y-1">
+                    <span className="block h-0.5 w-5 transform rounded-full bg-current rotate-45 translate-y-1.5" />
+                    <span className="block h-0.5 w-5 transform rounded-full bg-current opacity-0" />
+                    <span className="block h-0.5 w-5 transform rounded-full bg-current -rotate-45 -translate-y-1.5" />
+                  </div>
+                </button>
+                <nav className="mt-16 flex flex-col gap-6 text-lg uppercase tracking-[0.35em] text-[#1b1b1b]">
+                  {navItems.map((item) => (
+                    <Link key={item.href} href={item.href} onClick={closeMenu} className="transition hover:text-[#666]">
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
+                <div className="mt-auto rounded-3xl border border-[color:var(--brand-line)]/70 bg-white/85 p-6 text-center text-[11px] tracking-[0.3em] text-[#2c2b2b] shadow-[0_18px_40px_rgba(18,18,18,0.08)]">
+                  <div className="mb-4 flex justify-center text-[#1b1b1b]">
+                    <UserRound className="h-6 w-6" />
+                  </div>
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-[#6b6b6b]">
+                    Member access
+                  </p>
+                  <div className="mt-6 flex gap-4">
+                    <Link
+                      href="/login-signup?mode=login"
+                      className="flex-1 rounded-full border border-[color:var(--brand-line)]/60 px-4 py-3 text-[#1b1b1b] transition hover:border-[#1b1b1b]"
+                      onClick={closeMenu}
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      href="/login-signup?mode=join"
+                      className="flex-1 rounded-full bg-[#1b1b1b] px-4 py-3 text-white transition hover:bg-[#121212]"
+                      onClick={closeMenu}
+                    >
+                      Join
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

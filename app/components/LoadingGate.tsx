@@ -66,22 +66,22 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
     <AnimatePresence>
       {!exiting && (
         <motion.div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f6f1e8]"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f6f1e8] text-center md:text-left"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.6 } }}
         >
           <motion.div
             layoutId="alfanarenterprises-logo"
-            className="relative flex h-28 items-center justify-center"
+            className="relative flex flex-col md:flex-row md:h-28 md:items-center md:justify-center items-center justify-center px-6 md:px-0"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 210, damping: 22 }}
           >
-            <div className="flex items-center">
-              <span className="serif text-4xl font-extrabold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap font-[Lora, serif]">
+            <div className="flex flex-col md:flex-row md:items-center items-center">
+              <span className="serif text-3xl md:text-4xl font-extrabold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap font-[Lora, serif] mb-4 md:mb-0">
                 {brand.name}
               </span>
-              <div className="ml-4 h-12 overflow-visible flex items-center" style={{ width: '14rem' }}>
+              <div className="md:ml-4 h-12 overflow-visible flex items-center justify-center md:justify-start" style={{ width: '14rem' }}>
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={step}
@@ -89,7 +89,7 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
                     animate={{ y: 10, opacity: 1 }}
                     exit={{ y: -10, opacity: 0 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="serif text-2xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap w-full text-left font-[Georgia, serif]"
+                    className="serif text-xl md:text-2xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap w-full text-center md:text-left font-[Georgia, serif]"
                   >
                     {loadingPhrases[step % loadingPhrases.length]}
                   </motion.span>

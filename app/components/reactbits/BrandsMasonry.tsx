@@ -55,7 +55,7 @@ export default function BrandsMasonry({ items }: Props) {
   useEffect(() => {
     function updateColumns() {
       const width = window.innerWidth;
-      if (width < 640) setColumns(1);
+      if (width < 640) setColumns(2);
       else if (width < 1024) setColumns(2);
       else setColumns(5);
     }

@@ -9,6 +9,7 @@ const Silk = dynamic(() => import("@/app/components/reactbits/SilkBg"), {
 
 export default function SiteBackground() {
   const [blurOpacity, setBlurOpacity] = useState(0.85);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,8 +19,16 @@ export default function SiteBackground() {
       setBlurOpacity(0.85 * (1 - scrollFraction));
     };
 
+    const handleMenuToggle = (event: CustomEvent) => {
+      setMenuOpen(event.detail);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("menuToggle", handleMenuToggle as EventListener);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("menuToggle", handleMenuToggle as EventListener);
+    };
   }, []);
 
   return (
@@ -34,8 +43,8 @@ export default function SiteBackground() {
         strength={3.2}
         divCount={8}
         curve="bezier"
-        opacity={blurOpacity}
-        className="pointer-events-none"
+        opacity={menuOpen ? 0 : blurOpacity}
+        className="pointer-events-none md:opacity-100"
       />
     </>
   );

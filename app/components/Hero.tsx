@@ -43,7 +43,7 @@ export default function Hero({ className }: HeroProps) {
     <section
       id="top"
       className={cn(
-        "relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white/80 px-6 py-28",
+        "relative flex min-h-[80vh] md:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white/80 px-6 py-16 md:py-28",
         "shadow-[0_35px_120px_-60px_rgba(17,17,17,0.25)] backdrop-blur-sm",
         className,
       )}
@@ -61,7 +61,7 @@ export default function Hero({ className }: HeroProps) {
         <span className="text-sm uppercase tracking-[0.45em] text-[#2d3748]">
           Our Collections
         </span>
-        <h2 className="serif text-5xl font-semibold text-[#1b1b1b] md:text-6xl">
+        <h2 className="serif text-3xl md:text-5xl lg:text-6xl font-semibold text-[#1b1b1b]">
           Discover Alfanar Enterprises
         </h2>
         <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#4a4a4a]">
@@ -83,7 +83,7 @@ export default function Hero({ className }: HeroProps) {
             animate="visible"
             exit="hidden"
             variants={containerVariants}
-            className="mx-auto grid w-full max-w-5xl gap-8 md:grid-cols-3 mt-12"
+            className="mx-auto grid w-full max-w-5xl gap-8 md:grid-cols-3 mt-12 px-6 md:px-0"
           >
             {heroBanners.map(({ headline, sub, cta }) => (
               <motion.div
