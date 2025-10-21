@@ -89,7 +89,7 @@ export default function LoadingGate({ onDone, setLogoMounted }: Props) {
                     animate={{ y: 10, opacity: 1 }}
                     exit={{ y: -10, opacity: 0 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="serif text-xl md:text-2xl font-semibold tracking-[0.2em] text-[#1b1b1b] whitespace-nowrap w-full text-center md:text-left font-[Georgia, serif]"
+                    className="serif text-xl md:text-2xl font-semibold tracking-[0.2em] text-[#1b1b1b] md:whitespace-nowrap w-full text-center md:text-left font-[Georgia, serif]"
                   >
                     {loadingPhrases[step % loadingPhrases.length]}
                   </motion.span>
