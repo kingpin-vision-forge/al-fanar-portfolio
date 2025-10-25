@@ -13,8 +13,8 @@ export default function ContactStrip({ className }: ContactStripProps) {
       id="contact"
       aria-labelledby="contact-heading"
       className={cn(
-        "relative flex min-h-screen w-full items-center justify-center overflow-hidden border-y border-[color:var(--brand-line)] bg-gradient-to-b from-white/80 via-white/60 to-white/80 px-6 py-28",
-        "shadow-[0_45px_140px_-80px_rgba(20,20,20,0.4)] backdrop-blur",
+        "relative flex min-h-screen w-full items-center justify-center overflow-hidden border-y border-[color:var(--brand-line)] bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-28",
+        "shadow-[0_45px_140px_-80px_rgba(20,20,20,0.4)] backdrop-blur-lg",
         className,
       )}
     >

@@ -13,7 +13,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
       id="about"
       aria-labelledby="about-heading"
       className={cn(
-        "relative flex min-h-screen w-full items-center justify-center overflow-hidden border-y border-[color:var(--brand-line)] bg-gradient-to-b from-white/85 via-white/65 to-white/80 px-6 py-32",
+        "relative flex min-h-screen w-full items-center justify-center overflow-hidden border-y border-[color:var(--brand-line)] bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-32",
         "shadow-[0_55px_160px_-90px_rgba(21,21,21,0.45)] backdrop-blur",
         className,
       )}
@@ -53,7 +53,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5 }}
-                  className="rounded-[28px] border border-[color:var(--brand-line)] bg-white/80 p-7 shadow-[0_20px_60px_rgba(25,25,25,0.08)] backdrop-blur text-center md:text-left"
+                  className="rounded-[28px] border border-[color:var(--brand-line)] bg-white/80 p-7 shadow-[0_20px_60px_rgba(25,25,25,0.08)] backdrop-blur-lg text-center md:text-left"
                 >
                   <h3 className="serif text-xl font-semibold text-[#1b1b1b]">
                     {item.title}

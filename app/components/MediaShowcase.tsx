@@ -105,8 +105,8 @@ export default function MediaShowcase({ className }: MediaShowcaseProps) {
       id="media"
       aria-labelledby="media-heading"
       className={cn(
-        "relative flex min-h-[80vh] md:min-h-screen w-full items-center justify-center overflow-hidden bg-white/75 px-6 py-16 md:py-28",
-        "shadow-[0_40px_140px_-80px_rgba(18,18,18,0.4)] backdrop-blur-sm",
+        "relative flex min-h-[80vh] md:min-h-screen w-full items-center justify-center overflow-hidden bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-16 md:py-28",
+        "shadow-[0_40px_140px_-80px_rgba(18,18,18,0.4)] backdrop-blur",
         className,
       )}
     >

@@ -43,8 +43,8 @@ export default function Hero({ className }: HeroProps) {
     <section
       id="top"
       className={cn(
-        "relative flex min-h-[80vh] md:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white/80 px-6 py-16 md:py-28",
-        "shadow-[0_35px_120px_-60px_rgba(17,17,17,0.25)] backdrop-blur-sm",
+        "relative flex min-h-[80vh] md:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-16 md:py-28",
+        "shadow-[0_35px_120px_-60px_rgba(17,17,17,0.25)] backdrop-blur",
         className,
       )}
     >

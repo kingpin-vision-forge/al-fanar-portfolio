@@ -14,8 +14,8 @@ export default function CategoryGrid({ className }: CategoryGridProps) {
       id="brands"
       aria-labelledby="category-heading"
       className={cn(
-        "relative min-h-[80vh] md:flex md:min-h-screen md:items-center md:justify-center w-full overflow-hidden bg-white/70 px-6 py-16 md:py-28",
-        "shadow-[0_45px_140px_-75px_rgba(19,19,19,0.35)] backdrop-blur-sm",
+        "relative min-h-[80vh] md:flex md:min-h-screen md:items-center md:justify-center w-full overflow-hidden bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-16 md:py-28",
+        "shadow-[0_45px_140px_-75px_rgba(19,19,19,0.35)] backdrop-blur",
         className,
       )}
     >

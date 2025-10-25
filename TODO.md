@@ -1,3 +1,6 @@
-# TODO for Mobile Splash Screen Fix
-
-- [x] Modify `app/components/LoadingGate.tsx` to change `whitespace-nowrap` to `md:whitespace-nowrap` in the motion.span className to allow text wrapping on mobile only for the loading phrases.
+- [ ] Reduce opacity in AboutSection.tsx: bg-gradient-to-b from-white/85 via-white/65 to-white/80 to lower values
+- [ ] Reduce opacity in Hero.tsx: bg-white/80 to lower
+- [ ] Reduce opacity in CategoryGrid.tsx: bg-white/70 to lower
+- [ ] Reduce opacity in MediaShowcase.tsx: bg-white/75 to lower
+- [ ] Reduce opacity in ContactStrip.tsx: bg-gradient-to-b from-white/80 via-white/60 to-white/80 to lower
+- [ ] Also reduce inner bg-white opacities in AboutSection cards if needed

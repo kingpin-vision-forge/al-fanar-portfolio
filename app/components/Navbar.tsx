@@ -8,9 +8,9 @@ import { brand } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Trendy", href: "#trendy-men" },
-  { label: "Modesty", href: "#modesty-women" },
-  { label: "Colours", href: "#colours-kids" }
+  { label: "ABOUT", href: "#about" },
+  { label: "MEDIA", href: "#media" },
+  { label: "CONTACT", href: "#contact" }
 ];
 
 export default function Navbar({
@@ -24,6 +24,15 @@ export default function Navbar({
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
+
+  const handleSmoothScroll = (href: string) => {
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+    closeMenu();
+  };
 
   useEffect(() => {
     // Close the mobile drawer when the layout changes or on escape for accessibility.
@@ -70,10 +79,10 @@ export default function Navbar({
                 initial={false}
                 animate={{ opacity: logoMounted ? 1 : 0, y: logoMounted ? 0 : -6 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="flex items-center"
+                className="flex items-center bg-black p-1 rounded"
               >
                 <Image
-                  src="/brand/alfanar-logo.svg"
+                  src="/brand/upscaled-alfanar.png"
                   alt={`${brand.name} logo`}
                   width={160}
                   height={40}
@@ -88,13 +97,13 @@ export default function Navbar({
 
           <nav className="hidden md:flex md:flex-1 md:justify-center md:gap-10 items-center text-[11px] uppercase tracking-[0.35em] text-[#2c2b2b]">
             {navItems.map((item) => (
-              <Link
+              <button
                 key={item.href}
-                href={item.href}
+                onClick={() => handleSmoothScroll(item.href)}
                 className="transition hover:text-[#1b1b1b]"
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
           </nav>
 
@@ -179,9 +188,9 @@ export default function Navbar({
                 </button>
                 <nav className="mt-16 flex flex-col gap-6 text-lg uppercase tracking-[0.35em] text-[#1b1b1b]">
                   {navItems.map((item) => (
-                    <Link key={item.href} href={item.href} onClick={closeMenu} className="transition hover:text-[#666]">
+                    <button key={item.href} onClick={() => handleSmoothScroll(item.href)} className="transition hover:text-[#666]">
                       {item.label}
-                    </Link>
+                    </button>
                   ))}
                 </nav>
                 <div className="mt-auto rounded-3xl border border-[color:var(--brand-line)]/70 bg-white/85 p-6 text-center text-[11px] tracking-[0.3em] text-[#2c2b2b] shadow-[0_18px_40px_rgba(18,18,18,0.08)]">
