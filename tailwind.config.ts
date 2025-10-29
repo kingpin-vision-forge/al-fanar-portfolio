@@ -10,6 +10,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        serif: ["var(--font-serif)"],
+      },
+      colors: {
+        navy: {
+          DEFAULT: "var(--navy)",
+          900: "var(--navy-900)",
+          700: "var(--navy-700)",
+          300: "var(--navy-300)",
+        },
+        cream: "var(--cream)",
+        slate: "var(--slate)",
+        ink: "var(--ink)",
+        pitch: "var(--pitch)",
+        frost: "var(--frost)",
+      },
       translate: {
         "101": "101%",
       },

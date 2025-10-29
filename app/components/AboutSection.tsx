@@ -13,32 +13,32 @@ export default function AboutSection({ className }: AboutSectionProps) {
       id="about"
       aria-labelledby="about-heading"
       className={cn(
-        "relative flex min-h-screen w-full items-center justify-center overflow-hidden border-y border-[color:var(--brand-line)] bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-32",
-        "shadow-[0_55px_160px_-90px_rgba(21,21,21,0.45)] backdrop-blur",
+        "relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-gradient-to-b from-white via-[#f4f6ff] to-[var(--navy-300)]/10 px-6 py-32",
+        "border-b border-[color:var(--navy-300)]/30",
         className,
       )}
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--navy-300)]/35 to-transparent sm:block"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--navy-300)]/35 to-transparent sm:block"
       />
 
-      <div className="mx-auto w-full max-w-6xl px-2 text-[#1b1b1b]">
+      <div className="mx-auto w-full max-w-6xl px-2 text-[color:var(--ink)]">
         <div className="mb-16 text-center">
-          <span className="text-sm uppercase tracking-[0.45em] text-[#2d3748]">
+          <span className="text-xs font-semibold uppercase tracking-[0.48em] text-[color:var(--navy-700)]">
             About Alfanar
           </span>
           <h2
             id="about-heading"
-            className="serif text-5xl font-semibold text-[#1b1b1b] md:text-6xl mt-4"
+            className="mt-4 text-5xl font-black uppercase leading-tight md:text-6xl"
           >
             {aboutCopy.heading}
           </h2>
-          <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-[#2d3748]">
+          <p className="mx-auto mt-7 max-w-2xl text-base font-medium leading-relaxed text-[color:var(--ink)]/80">
             {aboutCopy.intro}
           </p>
         </div>
@@ -53,12 +53,12 @@ export default function AboutSection({ className }: AboutSectionProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5 }}
-                  className="rounded-[28px] border border-[color:var(--brand-line)] bg-white/80 p-7 shadow-[0_20px_60px_rgba(25,25,25,0.08)] backdrop-blur-lg text-center md:text-left"
+                  className="rounded-[28px] border border-[color:var(--navy-300)]/35 bg-white/95 p-7 text-left text-[color:var(--ink)] shadow-[0_24px_70px_rgba(8,16,80,0.12)] backdrop-blur-lg"
                 >
-                  <h3 className="serif text-xl font-semibold text-[#1b1b1b]">
+                  <h3 className="text-xl font-black uppercase tracking-[0.25em] text-[color:var(--ink)]">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#2d3748]">
+                  <p className="mt-3 text-sm leading-relaxed text-[color:var(--ink)]/75">
                     {item.description}
                   </p>
                 </motion.div>
@@ -67,11 +67,11 @@ export default function AboutSection({ className }: AboutSectionProps) {
           </div>
 
           <div className="flex flex-col gap-12">
-            <div className="rounded-[32px] border border-[color:var(--brand-line)] bg-white/85 p-10 shadow-[0_26px_70px_rgba(20,20,20,0.07)] text-center md:text-left">
-              <p className="text-[11px] uppercase tracking-[0.45em] text-[#2d3748]">
+            <div className="rounded-[32px] border border-[color:var(--navy-300)]/35 bg-white/95 p-10 text-left text-[color:var(--ink)] shadow-[0_26px_70px_rgba(8,16,80,0.12)] backdrop-blur">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-[color:var(--navy-700)]">
                 Philosophy
               </p>
-              <p className="serif mt-5 text-2xl font-semibold leading-[1.4] text-[#1b1b1b]">
+              <p className="serif mt-5 text-2xl font-semibold leading-[1.4] text-[color:var(--ink)]">
                 {brand.description}
               </p>
             </div>
@@ -80,12 +80,12 @@ export default function AboutSection({ className }: AboutSectionProps) {
               {aboutCopy.stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-[28px] border border-[color:var(--brand-line)] bg-white/80 py-8 text-center shadow-[0_18px_55px_rgba(22,22,22,0.07)]"
+                  className="rounded-[28px] border border-[color:var(--navy-300)]/35 bg-gradient-to-b from-white to-[var(--navy-300)]/12 py-8 text-center text-[color:var(--ink)] shadow-[0_18px_55px_rgba(8,16,80,0.12)]"
                 >
-                  <p className="serif text-3xl font-semibold text-[#1b1b1b]">
+                  <p className="text-3xl font-black uppercase text-[color:var(--ink)]">
                     {stat.value}
                   </p>
-                  <p className="mt-2 text-[10px] uppercase tracking-[0.45em] text-[#7a7a7a]">
+                  <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.45em] text-[color:var(--navy-700)]/70">
                     {stat.label}
                   </p>
                 </div>

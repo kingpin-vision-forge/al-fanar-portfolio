@@ -14,44 +14,44 @@ export default function CategoryGrid({ className }: CategoryGridProps) {
       id="brands"
       aria-labelledby="category-heading"
       className={cn(
-        "relative min-h-[80vh] md:flex md:min-h-screen md:items-center md:justify-center w-full overflow-hidden bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-16 md:py-28",
-        "shadow-[0_45px_140px_-75px_rgba(19,19,19,0.35)] backdrop-blur",
+        "relative min-h-[80vh] w-full overflow-hidden bg-gradient-to-b from-white via-[#f4f6ff] to-[var(--navy-300)]/10 px-6 py-20 md:flex md:min-h-screen md:items-center md:justify-center md:py-28",
+        "border-b border-[color:var(--navy-300)]/30",
         className,
       )}
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--navy-300)]/35 to-transparent sm:block"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--navy-300)]/35 to-transparent sm:block"
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 text-center md:text-center">
-        <span className="text-sm uppercase tracking-[0.45em] text-[#2c2b2b]">
-          THREE REDIRECTIONS
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 text-center text-[color:var(--ink)]">
+        <span className="text-xs font-semibold uppercase tracking-[0.48em] text-[color:var(--navy-700)]">
+          Three Capsules
         </span>
         <h2
           id="category-heading"
-          className="serif text-3xl md:text-5xl lg:text-6xl font-semibold text-[#1b1b1b] text-center"
+          className="text-3xl font-black uppercase leading-tight md:text-5xl lg:text-6xl"
         >
-          Tailored universes crafted with couture precision
+          Tailored universes with clubhouse energy
         </h2>
-        <p className="max-w-2xl text-base leading-relaxed text-[#4a4a4a] mx-auto text-center">
+        <p className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-[color:var(--ink)]/75">
           Inspired by the icons of Indian luxury — Raymond, Biba and FirstCry —
           each capsule mixes signature silhouettes with the Alfanar Enterprises touch.
         </p>
       </div>
 
-      <div className="mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-3 mt-8 md:mt-0">
+      <div className="mx-auto mt-10 grid w-full max-w-6xl gap-8 md:mt-0 md:grid-cols-3">
         {categoryCards.map((card) => (
-          <Link key={card.slug} href="/brands" className="group">
+          <Link key={card.slug} href={card.to} className="group">
             <motion.div
-              whileHover={{ y: -6 }}
-              className="space-y-5 rounded-[36px] border border-[color:var(--brand-line)]/60 bg-white/85 p-6 shadow-[0_22px_60px_rgba(16,16,16,0.06)] transition duration-500"
+              whileHover={{ y: -8 }}
+              className="flex h-full flex-col justify-between rounded-[32px] border border-[color:var(--navy-300)]/35 bg-white/95 p-6 text-left text-[color:var(--ink)] shadow-[0_24px_70px_rgba(8,16,80,0.12)] transition duration-500 backdrop-blur"
             >
-              <div className="relative h-[16rem] md:h-[22rem] overflow-hidden rounded-[36px] bg-[#f0e7da] shadow-lg">
+              <div className="relative h-[16rem] overflow-hidden rounded-[28px] bg-gradient-to-b from-white to-[var(--navy-300)]/12 shadow-lg md:h-[22rem]">
                 <div
                   className="absolute inset-0 transition duration-[1200ms] group-hover:scale-105"
                   style={{
@@ -60,27 +60,30 @@ export default function CategoryGrid({ className }: CategoryGridProps) {
                     backgroundPosition: "center",
                   }}
                 />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(255,255,255,0.25),transparent_60%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(255,255,255,0.35),transparent_65%)]" />
               </div>
 
-              <div className="space-y-2 text-center">
-                <p className="text-[11px] uppercase tracking-[0.4em] text-[#808080]">
+              <div className="flex flex-1 flex-col items-start gap-1 pt-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[color:var(--navy-700)]/80">
                   {card.title}
                 </p>
-                <h3 className="serif text-2xl font-semibold text-[#1b1b1b]">
+                <h3 className="text-2xl font-black uppercase text-[color:var(--ink)]">
                   {card.tagline}
                 </h3>
-                <span className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-[#1b1b1b]">
-                  View collection
-                  <motion.span
-                    aria-hidden="true"
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ repeat: Infinity, duration: 2.4 }}
-                  >
-                    →
-                  </motion.span>
-                </span>
+                <p className="mt-3 text-sm leading-relaxed text-[color:var(--ink)]/70">
+                  {card.tagline}
+                </p>
               </div>
+              <span className="mt-6 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.4em] text-[color:var(--navy-700)] transition group-hover:text-[color:var(--navy-300)]">
+                View collection
+                <motion.span
+                  aria-hidden="true"
+                  animate={{ x: [0, 6, 0] }}
+                  transition={{ repeat: Infinity, duration: 2.1 }}
+                >
+                  →
+                </motion.span>
+              </span>
             </motion.div>
           </Link>
         ))}

@@ -113,11 +113,11 @@ const MenuItem: React.FC<MenuItemProps> = ({
   const repeatedMarqueeContent = React.useMemo(() => {
     return Array.from({ length: 4 }).map((_, idx) => (
       <React.Fragment key={idx}>
-        <span className="text-[#060010] uppercase font-normal text-[4vh] leading-[1.2] p-[1vh_1vw_0]">
+        <span className="p-[1vh_1vw_0] text-[4vh] font-black uppercase leading-[1.15] text-[color:var(--cream)]">
           {text}
         </span>
         <div
-          className="w-[200px] h-[7vh] my-[2em] mx-[2vw] p-[1em_0] rounded-[50px] bg-cover bg-center"
+          className="mx-[2vw] my-[2em] h-[7vh] w-[200px] rounded-[50px] bg-cover bg-center p-[1em_0] ring-1 ring-white/15"
           style={{ backgroundImage: `url(${image})` }}
         />
       </React.Fragment>
@@ -126,12 +126,12 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   return (
     <div
-      className="flex-1 relative overflow-hidden text-center shadow-[0_-1px_0_0_rgba(255,255,255,0.2)]"
+      className="relative flex-1 overflow-hidden text-center shadow-[0_-1px_0_0_rgba(255,255,255,0.18)]"
       ref={itemRef}
     >
       <a
-        className={`flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-white text-[4vh] transition-colors ${
-          active ? "text-[#060010]" : "hover:text-[#060010] focus-visible:text-[#060010]"
+        className={`relative flex h-full cursor-pointer items-center justify-center text-[4vh] font-black uppercase tracking-[0.28em] text-[color:var(--cream)] transition-colors no-underline ${
+          active ? "text-[color:var(--navy-300)]" : "hover:text-[color:var(--navy-300)] focus-visible:text-[color:var(--navy-300)]"
         }`}
         href={link}
         onMouseEnter={handleMouseEnter}
@@ -142,7 +142,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         {text}
       </a>
       <div
-        className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none bg-white translate-y-[101%]"
+        className="pointer-events-none absolute top-0 left-0 h-full w-full translate-y-[101%] overflow-hidden bg-[linear-gradient(90deg,rgba(255,255,255,0.88),rgba(125,139,255,0.2))]"
         ref={marqueeRef}
       >
         <div className="h-full w-[200%] flex" ref={marqueeInnerRef}>

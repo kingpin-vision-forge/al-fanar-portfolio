@@ -9,8 +9,10 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "ABOUT", href: "#about" },
+  { label: "OUR BRANDS", href: "#brands" },
+  { label: "GALLERY", href: "#gallery" },
   { label: "MEDIA", href: "#media" },
-  { label: "CONTACT", href: "#contact" }
+  { label: "CONTACT", href: "#contact" },
 ];
 
 export default function Navbar({
@@ -68,26 +70,23 @@ export default function Navbar({
       )}
       aria-hidden={!visible}
     >
-      <div className="border-b border-[color:var(--brand-line)]/60 bg-white/85 shadow-[0_10px_40px_rgba(15,23,42,0.06)] backdrop-blur">
-        <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between gap-4 px-6 md:gap-8">
-          <motion.div
-            layoutId="alfanarenterprises-logo"
-            className="relative flex items-center md:flex-1"
-          >
-            <Link href="/" className="flex items-center gap-3" onClick={closeMenu}>
+      <div className="border-b border-white/10 bg-gradient-to-b from-[var(--navy-900)] to-[var(--navy)] text-[color:var(--cream)] shadow-[0_28px_90px_rgba(5,12,70,0.45)]">
+        <div className="mx-auto flex h-20 w-full items-center justify-between gap-3 px-4 md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6 md:px-[10%]">
+          <motion.div layoutId="alfanarenterprises-logo" className="relative flex items-center md:justify-self-start">
+            <Link href="/" className="flex items-center" onClick={closeMenu}>
               <motion.div
                 initial={false}
                 animate={{ opacity: logoMounted ? 1 : 0, y: logoMounted ? 0 : -6 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="flex items-center bg-black p-1 rounded"
+                className="flex items-center"
               >
                 <Image
                   src="/brand/upscaled-alfanar.png"
                   alt={`${brand.name} logo`}
-                  width={160}
-                  height={40}
+                  width={150}
+                  height={42}
                   priority
-                  sizes="(max-width: 768px) 120px, 160px"
+                  sizes="(max-width: 768px) 120px, 150px"
                   className="h-8 w-auto md:h-10"
                 />
               </motion.div>
@@ -95,41 +94,46 @@ export default function Navbar({
             </Link>
           </motion.div>
 
-          <nav className="hidden md:flex md:flex-1 md:justify-center md:gap-10 items-center text-[11px] uppercase tracking-[0.35em] text-[#2c2b2b]">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => handleSmoothScroll(item.href)}
-                className="transition hover:text-[#1b1b1b]"
-              >
-                {item.label}
-              </button>
-            ))}
+          <nav className="hidden items-center text-xs font-semibold uppercase tracking-[0.32em] text-[color:var(--cream)]/75 transition md:col-start-2 md:flex md:justify-center md:gap-6">
+            {navItems.map((item) => {
+              const isHashLink = item.href.startsWith("#");
+              if (isHashLink) {
+                return (
+                  <button
+                    key={item.href}
+                    onClick={() => handleSmoothScroll(item.href)}
+                    className="transition hover:text-[color:var(--cream)]"
+                  >
+                    {item.label}
+                  </button>
+                );
+              }
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="transition hover:text-[color:var(--cream)]"
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
-          <div className="hidden items-center justify-end md:flex md:flex-1">
-            <div className="inline-flex items-stretch overflow-hidden rounded-full border border-[color:var(--brand-line)]/70 bg-white/90 text-[11px] uppercase tracking-[0.35em] shadow-[0_18px_40px_rgba(18,18,18,0.08)]">
-              <Link
-                href="/login-signup?mode=login"
-                className="flex items-center gap-2 px-4 py-2 text-[#2c2b2b] transition hover:text-[#1b1b1b]"
-              >
-                <UserRound className="h-4 w-4" />
-                <span>Login</span>
-              </Link>
-              <span className="my-1 w-px bg-[color:var(--brand-line)]/50" />
-              <Link
-                href="/login-signup?mode=join"
-                className="flex items-center gap-2 bg-[#1b1b1b] px-5 py-2 text-white transition hover:bg-[#121212]"
-              >
-                <span>Join</span>
-                <span aria-hidden="true">→</span>
-              </Link>
-            </div>
+          <div className="hidden items-center md:flex md:justify-self-end">
+            <Link
+              href="/login-signup"
+              className="ml-auto inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-[color:var(--cream)] shadow-[0_20px_55px_rgba(12,40,180,0.32)] transition hover:border-white hover:text-[color:var(--cream)] hover:shadow-[0_26px_70px_rgba(12,40,180,0.45)] backdrop-blur whitespace-nowrap"
+            >
+              <UserRound className="h-4 w-4" />
+              Login / Sign Up
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
           <button
             type="button"
-            className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--brand-line)] text-[#1b1b1b] transition hover:border-[#1b1b1b] md:hidden"
+            className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-[color:var(--cream)] transition hover:border-white/40 md:hidden"
             onClick={toggleMenu}
             aria-expanded={menuOpen}
             aria-label="Toggle navigation"
@@ -163,7 +167,7 @@ export default function Navbar({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-30 bg-[color:var(--navy-900)]/85 backdrop-blur-sm md:hidden"
               onClick={closeMenu}
             />
             <motion.div
@@ -171,12 +175,12 @@ export default function Navbar({
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="fixed top-0 right-0 z-40 h-full w-4/5 max-w-sm bg-white shadow-2xl md:hidden"
+              className="fixed top-0 right-0 z-40 h-full w-4/5 max-w-sm bg-gradient-to-b from-[var(--navy-900)] to-[var(--navy)] text-[color:var(--cream)] shadow-[0_40px_90px_rgba(5,12,70,0.45)] md:hidden"
             >
               <div className="relative flex h-full flex-col px-6 py-8">
                 <button
                   type="button"
-                  className="absolute top-6 right-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--brand-line)] text-[#1b1b1b] transition hover:border-[#1b1b1b]"
+                  className="absolute top-6 right-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-[color:var(--cream)] transition hover:border-white/40"
                   onClick={closeMenu}
                   aria-label="Close navigation"
                 >
@@ -186,36 +190,45 @@ export default function Navbar({
                     <span className="block h-0.5 w-5 transform rounded-full bg-current -rotate-45 -translate-y-1.5" />
                   </div>
                 </button>
-                <nav className="mt-16 flex flex-col gap-6 text-lg uppercase tracking-[0.35em] text-[#1b1b1b]">
-                  {navItems.map((item) => (
-                    <button key={item.href} onClick={() => handleSmoothScroll(item.href)} className="transition hover:text-[#666]">
-                      {item.label}
-                    </button>
-                  ))}
+                <nav className="mt-16 flex flex-col gap-6 text-lg uppercase tracking-[0.3em] text-[color:var(--cream)]/80">
+                  {navItems.map((item) => {
+                    const isHashLink = item.href.startsWith("#");
+                    if (isHashLink) {
+                      return (
+                        <button
+                          key={item.href}
+                          onClick={() => handleSmoothScroll(item.href)}
+                          className="transition hover:text-[color:var(--navy-300)]"
+                        >
+                          {item.label}
+                        </button>
+                      );
+                    }
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="transition hover:text-[color:var(--navy-300)]"
+                        onClick={closeMenu}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
                 </nav>
-                <div className="mt-auto rounded-3xl border border-[color:var(--brand-line)]/70 bg-white/85 p-6 text-center text-[11px] tracking-[0.3em] text-[#2c2b2b] shadow-[0_18px_40px_rgba(18,18,18,0.08)]">
-                  <div className="mb-4 flex justify-center text-[#1b1b1b]">
-                    <UserRound className="h-6 w-6" />
-                  </div>
-                  <p className="text-[10px] uppercase tracking-[0.4em] text-[#6b6b6b]">
+                <div className="mt-auto rounded-3xl border border-white/15 bg-white/10 p-6 text-center text-[11px] tracking-[0.3em] text-[color:var(--cream)]/80 shadow-[0_24px_60px_rgba(5,12,70,0.5)] backdrop-blur">
+                  <p className="mb-4 text-[10px] uppercase tracking-[0.4em] text-[color:var(--slate)]">
                     Member access
                   </p>
-                  <div className="mt-6 flex gap-4">
-                    <Link
-                      href="/login-signup?mode=login"
-                      className="flex-1 rounded-full border border-[color:var(--brand-line)]/60 px-4 py-3 text-[#1b1b1b] transition hover:border-[#1b1b1b]"
-                      onClick={closeMenu}
-                    >
-                      Login
-                    </Link>
-                    <Link
-                      href="/login-signup?mode=join"
-                      className="flex-1 rounded-full bg-[#1b1b1b] px-4 py-3 text-white transition hover:bg-[#121212]"
-                      onClick={closeMenu}
-                    >
-                      Join
-                    </Link>
-                  </div>
+                  <Link
+                    href="/login-signup"
+                    className="inline-flex items-center justify-center gap-3 rounded-full border border-white/25 bg-white/10 px-4 py-3 text-[color:var(--cream)] transition hover:border-white hover:text-[color:var(--navy-300)] whitespace-nowrap"
+                    onClick={closeMenu}
+                  >
+                    <UserRound className="h-4 w-4" />
+                    Login / Sign Up
+                    <span aria-hidden="true">→</span>
+                  </Link>
                 </div>
               </div>
             </motion.div>

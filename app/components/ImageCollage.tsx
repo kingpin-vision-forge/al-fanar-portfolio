@@ -21,7 +21,7 @@ function CollageTile({ src, alt, priority }: CollageTileProps) {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="relative h-48 w-full overflow-hidden rounded-lg border border-[color:var(--brand-line)]/50 bg-white/60 shadow-[0_12px_30px_rgba(17,17,17,0.08)] backdrop-blur-sm">
+    <div className="relative h-48 w-full overflow-hidden rounded-lg border border-[color:var(--navy-300)]/30 bg-white/85 shadow-[0_12px_30px_rgba(8,16,80,0.12)] backdrop-blur-sm">
       {!hasError ? (
         <Image
           src={src}
@@ -33,8 +33,8 @@ function CollageTile({ src, alt, priority }: CollageTileProps) {
           onError={() => setHasError(true)}
         />
       ) : (
-        <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.75),rgba(244,244,244,0.95))] text-center text-sm uppercase tracking-[0.3em] text-[#3a3a3a]">
-          <span className="text-xs text-[#929292]">Media refresh pending</span>
+        <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.82),rgba(125,139,255,0.12))] text-center text-sm uppercase tracking-[0.3em] text-[color:var(--ink)]/80">
+          <span className="text-xs text-[color:var(--slate)]">Media refresh pending</span>
           <span>{alt}</span>
         </div>
       )}

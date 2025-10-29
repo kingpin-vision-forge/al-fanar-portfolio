@@ -4,16 +4,27 @@
 
 :root {
   color-scheme: light;
-  --brand-cream: #f6f1e8;
-  --brand-ink: #1b1b1b;
-  --brand-line: rgba(27, 27, 27, 0.12);
+  --navy: #0d1fbf;
+  --navy-900: #0a158f;
+  --navy-700: #1230ff;
+  --navy-300: #7d8bff;
+  --cream: #f2eee4;
+  --slate: #cbd5e1;
+  --ink: #080b16;
+  --pitch: #04060f;
+  --frost: #eef2ff;
+  --focus-ring: rgba(18, 48, 255, 0.45);
+  --brand-line: color-mix(in srgb, var(--navy-300) 45%, #ffffff);
+  --font-sans: "Neue Haas Grotesk", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --font-serif: "Bodoni Moda", "Didot", "Bodoni MT", "Times New Roman", serif;
 }
 
 body {
   min-height: 100vh;
-  background-color: var(--brand-cream);
-  color: var(--brand-ink);
+  background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, var(--navy-300) 6%, #ffffff) 100%);
+  color: var(--ink);
   font-family: var(--font-sans);
+  line-height: 1.7;
 }
 
 a {
@@ -25,12 +36,12 @@ a {
 }
 
 .hairline {
-  border-color: var(--brand-line);
+  border-color: color-mix(in srgb, var(--navy-300) 45%, #ffffff);
 }
 
 ::selection {
-  background: var(--brand-ink);
-  color: #fff;
+  background: var(--navy);
+  color: var(--cream);
 }
 
 @media (max-width: 640px) {

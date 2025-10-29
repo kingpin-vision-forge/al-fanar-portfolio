@@ -1,7 +1,7 @@
 import { heroBanners } from "@/lib/content";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type HeroProps = {
@@ -11,6 +11,7 @@ type HeroProps = {
 export default function Hero({ className }: HeroProps) {
   const [showBanners, setShowBanners] = useState(false);
   const bannersRef = useRef<HTMLDivElement>(null);
+  const MotionLink = useMemo(() => motion(Link), []);
 
   useEffect(() => {
     if (showBanners && bannersRef.current) {
@@ -39,74 +40,134 @@ export default function Hero({ className }: HeroProps) {
     visible: { opacity: 1, y: 0 },
   };
 
+  const heroStack = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section
       id="top"
       className={cn(
-        "relative flex min-h-[80vh] md:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-16 md:py-28",
-        "shadow-[0_35px_120px_-60px_rgba(17,17,17,0.25)] backdrop-blur",
+        "relative flex min-h-[80vh] w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-white via-[#f4f6ff] to-[var(--navy-300)]/10 px-6 py-20 md:min-h-screen md:py-28",
+        "border-b border-[color:var(--navy-300)]/30",
         className,
       )}
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+        className="pointer-events-none absolute inset-x-0 top-0 hidden h-full w-full bg-[radial-gradient(circle_at_top,rgba(18,48,255,0.18)0%,rgba(18,48,255,0)_55%)] md:block"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
-      />
-
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 text-center">
-        <span className="text-sm uppercase tracking-[0.45em] text-[#2d3748]">
-          Our Collections
-        </span>
-        <h2 className="serif text-3xl md:text-5xl lg:text-6xl font-semibold text-[#1b1b1b]">
-          Discover Alfanar Enterprises
-        </h2>
-        <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#4a4a4a]">
-          Explore our tailored universes crafted with couture precision for every family member.
-        </p>
-        <button
-          onClick={() => setShowBanners(!showBanners)}
-          className="mt-8 rounded-full bg-[#1b1b1b] px-4 py-3 text-sm font-semibold text-white transition hover:bg-black max-w-xs mx-auto"
-        >
-          See More
-        </button>
-      </div>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{ visible: { transition: { staggerChildren: 0.18 } } }}
+        className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 text-center md:gap-16"
+      >
+        <motion.div variants={heroStack} className="flex flex-col items-center gap-6 md:gap-8">
+          <motion.span
+            variants={heroStack}
+            className="inline-flex items-center gap-3 rounded-full border border-[color:var(--navy-300)]/60 bg-white/70 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.5em] text-[color:var(--navy-700)] backdrop-blur"
+          >
+            Momentum In Motion
+          </motion.span>
+          <motion.h2
+            variants={heroStack}
+            className="text-4xl font-black uppercase leading-tight text-[color:var(--ink)] md:text-6xl lg:text-[64px]"
+          >
+            Elevate Every{" "}
+            <span className="text-transparent bg-gradient-to-r from-[var(--navy)] via-[var(--navy-700)] to-[var(--navy-300)] bg-clip-text">
+              Stride
+            </span>
+          </motion.h2>
+          <motion.p
+            variants={heroStack}
+            className="mx-auto max-w-3xl text-base font-medium leading-relaxed text-[color:var(--ink)]/80 md:text-lg"
+          >
+            Engineered silhouettes and breathable layers inspired by the world’s leading sport houses.
+            Built for families that move fast and live louder.
+          </motion.p>
+          <motion.div
+            variants={heroStack}
+            className="flex flex-wrap items-center justify-center gap-4"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 25px 65px rgba(12, 40, 180, 0.40)" }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              onClick={() => setShowBanners(!showBanners)}
+              className="inline-flex items-center gap-3 rounded-full bg-[length:200%_200%] bg-gradient-to-r from-[var(--navy)] via-[var(--navy-700)] to-[var(--navy-300)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-[color:var(--cream)] shadow-[0_18px_55px_rgba(12,40,180,0.32)] transition-[background-position]"
+            >
+              Explore Drops
+              <motion.span
+                aria-hidden="true"
+                animate={{ x: showBanners ? [0, 4, 0] : [0, 8, 0] }}
+                transition={{ repeat: Infinity, duration: 1.6 }}
+              >
+                →
+              </motion.span>
+            </motion.button>
+            <MotionLink
+              href="#contact"
+              whileHover={{ scale: 1.05, boxShadow: "0 18px 45px rgba(12, 40, 180, 0.25)" }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              className="inline-flex items-center gap-3 rounded-full border border-[color:var(--navy-300)]/55 bg-white/80 px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-[color:var(--navy-900)] backdrop-blur transition hover:border-[color:var(--navy)] hover:text-[color:var(--navy)]"
+            >
+              Talk Styling
+              <motion.span
+                aria-hidden="true"
+                animate={{ rotate: [0, 6, -6, 0] }}
+                transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+              >
+                ↗
+              </motion.span>
+            </MotionLink>
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
       <AnimatePresence>
-        {showBanners && (
-          <motion.div
-            ref={bannersRef}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={containerVariants}
-            className="mx-auto grid w-full max-w-5xl gap-8 md:grid-cols-3 mt-12 px-6 md:px-0"
-          >
-            {heroBanners.map(({ headline, sub, cta }) => (
-              <motion.div
-                key={headline}
-                variants={itemVariants}
-                className="space-y-3 rounded-[32px] border border-[color:var(--brand-line)]/60 bg-white/80 p-8 text-center shadow-[0_18px_60px_rgba(15,15,15,0.05)]"
-              >
-                <h3 className="serif text-3xl font-semibold text-[#1b1b1b]">
-                  {headline}
-                </h3>
-                <p className="text-base leading-relaxed text-[#4c4c4c]">{sub}</p>
-                <Link
-                  href={cta.href}
-                  className="inline-flex items-center justify-center gap-3 text-sm uppercase tracking-[0.4em] text-[#1b1b1b] transition hover:text-black"
+          {showBanners && (
+            <motion.div
+              ref={bannersRef}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={containerVariants}
+              className="mx-auto mt-14 grid w-full max-w-5xl gap-8 px-6 md:grid-cols-3 md:px-0"
+            >
+              {heroBanners.map(({ headline, sub, cta }) => (
+                <motion.div
+                  key={headline}
+                  variants={itemVariants}
+                  className="space-y-3 rounded-[32px] border border-[color:var(--navy-300)]/35 bg-white/90 p-8 text-left text-[color:var(--ink)] shadow-[0_18px_60px_rgba(8,16,80,0.12)] backdrop-blur"
                 >
-                  {cta.label}
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  <h3 className="text-2xl font-black uppercase tracking-[0.2em] text-[color:var(--ink)]">
+                    {headline}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[color:var(--ink)]/75">{sub}</p>
+                  <motion.div whileHover={{ x: 4 }}>
+                    <Link
+                      href={cta.href}
+                      className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-[color:var(--navy-700)] transition hover:text-[color:var(--navy-300)]"
+                    >
+                      {cta.label}
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
     </section>
   );
 }

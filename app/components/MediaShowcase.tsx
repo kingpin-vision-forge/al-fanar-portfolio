@@ -102,38 +102,38 @@ type MediaShowcaseProps = {
 export default function MediaShowcase({ className }: MediaShowcaseProps) {
   return (
     <section
-      id="media"
+      id="gallery"
       aria-labelledby="media-heading"
       className={cn(
-        "relative flex min-h-[80vh] md:min-h-screen w-full items-center justify-center overflow-hidden bg-gradient-to-b from-white/50 via-white/30 to-white/45 px-6 py-16 md:py-28",
-        "shadow-[0_40px_140px_-80px_rgba(18,18,18,0.4)] backdrop-blur",
+        "relative flex min-h-[80vh] w-full items-center justify-center overflow-hidden bg-gradient-to-b from-white via-[#f4f6ff] to-[var(--navy-300)]/10 px-6 py-20 md:min-h-screen md:py-28",
+        "border-b border-[color:var(--navy-300)]/30",
         className,
       )}
     >
+      <div id="media" className="absolute -top-24 h-px w-px opacity-0" aria-hidden="true" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+        className="pointer-events-none absolute inset-x-10 top-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--navy-300)]/35 to-transparent sm:block"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--brand-line)]/70 to-transparent sm:block"
+        className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--navy-300)]/35 to-transparent sm:block"
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 text-[color:var(--ink)]">
         <div className="mb-4 text-center">
-          <span className="text-[11px] uppercase tracking-[0.45em] text-[#2c2b2b]">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.48em] text-[color:var(--navy-700)]">
             Media & Gallery
           </span>
           <h2
             id="media-heading"
-            className="serif text-2xl md:text-4xl lg:text-5xl font-semibold text-[#1b1b1b] mt-4"
+            className="mt-4 text-3xl font-black uppercase leading-tight md:text-4xl lg:text-5xl"
           >
             Press spotlights on our maison moments
           </h2>
-        <p className="mx-auto mt-7 max-w-2xl text-sm leading-relaxed text-[#4a4a4a]">
-          From architectural unveilings to artisan collaborations, discover the
-          narratives defining the Alfanar Enterprises world across luxury media.
-        </p>
+          <p className="mx-auto mt-7 max-w-2xl text-sm font-medium leading-relaxed text-[color:var(--ink)]/75">
+            From architectural unveilings to artisan collaborations, discover the narratives defining the Alfanar Enterprises world across luxury media.
+          </p>
         </div>
 
         <BrandsMasonry items={masonryItems} />

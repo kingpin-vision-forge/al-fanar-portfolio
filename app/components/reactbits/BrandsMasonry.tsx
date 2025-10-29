@@ -23,10 +23,10 @@ function MasonryVisual({ item }: { item: Item }) {
   if (hasError) {
     return (
       <div
-        className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-lg border border-[color:var(--brand-line)]/60 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.8),rgba(244,244,244,0.95))] px-6 text-center text-xs uppercase tracking-[0.3em] text-[#3a3a3a]"
+        className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-lg border border-[color:var(--navy-300)]/35 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.85),rgba(125,139,255,0.12))] px-6 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--ink)]/80"
         style={{ height: item.height }}
       >
-        <span className="text-[10px] uppercase tracking-[0.4em] text-[#959595]">
+        <span className="text-[10px] uppercase tracking-[0.4em] text-[color:var(--slate)]">
           Image offline
         </span>
         <span className="text-sm">{item.id}</span>
@@ -103,18 +103,18 @@ export default function BrandsMasonry({ items }: Props) {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block overflow-hidden rounded-lg shadow-lg will-change-transform"
+              className="group block overflow-hidden rounded-lg border border-[color:var(--navy-300)]/30 bg-white/85 shadow-[0_10px_40px_rgba(8,16,80,0.12)] backdrop-blur transition-transform will-change-transform"
               onMouseEnter={(e) => {
                 const target = e.currentTarget;
                 target.style.transform = "translateY(-8px)";
                 target.style.transition = "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)";
-                target.style.boxShadow = "0 30px 80px rgba(16, 16, 16, 0.1)";
+                target.style.boxShadow = "0 30px 80px rgba(12, 40, 180, 0.18)";
               }}
               onMouseLeave={(e) => {
                 const target = e.currentTarget;
                 target.style.transform = "translateY(0)";
                 target.style.transition = "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)";
-                target.style.boxShadow = "0 0 0 rgba(0, 0, 0, 0)";
+                target.style.boxShadow = "0 10px 40px rgba(8, 16, 80, 0.12)";
               }}
             >
               <MasonryVisual item={item} />

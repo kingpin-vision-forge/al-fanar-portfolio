@@ -34,7 +34,7 @@ export default function SiteBackground() {
   return (
     <>
       <div className="fixed inset-0 -z-50 opacity-80">
-        <Silk speed={5.5} scale={1.15} color="#ffc1c1" noiseIntensity={1.2} rotation={0.3} />
+        <Silk speed={5.2} scale={1.08} color="#dce2ff" noiseIntensity={0.9} rotation={0.28} />
       </div>
       <GradualBlur
         target="page"
