@@ -15,7 +15,6 @@ export default function BrandsPage() {
             Tailored universes crafted with electric precision
           </h2>
           <p className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-[color:var(--ink)]/75">
-            Inspired by the icons of Indian luxury — Raymond, Biba and FirstCry — each capsule mixes signature silhouettes with the Alfanar Enterprises touch.
           </p>
         </div>
 
