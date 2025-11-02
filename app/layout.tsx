@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Bodoni_Moda } from "next/font/google";
 import SiteBackground from "@/app/components/SiteBackground";
+import SmoothScrollProvider from "@/app/components/providers/SmoothScrollProvider";
 
 const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
@@ -20,8 +21,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body suppressHydrationWarning={true} className={`${bodoniModa.variable} flex min-h-screen flex-col`}>
-        <SiteBackground />
-        {children}
+        <SmoothScrollProvider>
+          <SiteBackground />
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const imagePaths = [
   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
@@ -21,7 +22,14 @@ function CollageTile({ src, alt, priority }: CollageTileProps) {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="relative h-48 w-full overflow-hidden rounded-lg border border-[color:var(--navy-300)]/30 bg-white/85 shadow-[0_12px_30px_rgba(8,16,80,0.12)] backdrop-blur-sm">
+    <motion.div
+      className="relative h-48 w-full overflow-hidden rounded-lg border border-[color:var(--navy-300)]/30 bg-white/85 shadow-[0_12px_30px_rgba(8,16,80,0.12)] backdrop-blur-sm"
+      initial={{ opacity: 0, y: 40, rotateX: 6 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true, amount: 0.35 }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ scale: 1.015 }}
+    >
       {!hasError ? (
         <Image
           src={src}
@@ -38,13 +46,19 @@ function CollageTile({ src, alt, priority }: CollageTileProps) {
           <span>{alt}</span>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 
 export default function ImageCollage() {
   return (
-    <div className="grid grid-cols-3 gap-4 p-4">
+    <motion.div
+      className="grid grid-cols-3 gap-4 p-4"
+      initial={{ opacity: 0.8 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true, amount: 0.25 }}
+    >
       {imagePaths.map((src, index) => (
         <CollageTile
           key={index}
@@ -53,6 +67,6 @@ export default function ImageCollage() {
           priority={index === 0}
         />
       ))}
-    </div>
+    </motion.div>
   );
 }

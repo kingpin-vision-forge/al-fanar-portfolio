@@ -1,6 +1,8 @@
 "use client";
 import { cn } from "@/lib/utils";
 import BrandsMasonry from "@/app/components/reactbits/BrandsMasonry";
+import { motion, useInView } from "framer-motion";
+import { useMemo, useRef } from "react";
 
 const masonryItems = [
   {
@@ -100,6 +102,21 @@ type MediaShowcaseProps = {
 };
 
 export default function MediaShowcase({ className }: MediaShowcaseProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.35 });
+
+  const headingVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 32 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+      },
+    }),
+    [],
+  );
+
   return (
     <section
       id="gallery"
@@ -109,6 +126,7 @@ export default function MediaShowcase({ className }: MediaShowcaseProps) {
         "border-b border-[color:var(--navy-300)]/30",
         className,
       )}
+      ref={sectionRef}
     >
       <div id="media" className="absolute -top-24 h-px w-px opacity-0" aria-hidden="true" />
       <div
@@ -120,24 +138,50 @@ export default function MediaShowcase({ className }: MediaShowcaseProps) {
         className="pointer-events-none absolute inset-x-10 bottom-16 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--navy-300)]/35 to-transparent sm:block"
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 text-[color:var(--ink)]">
-        <div className="mb-4 text-center">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.48em] text-[color:var(--navy-700)]">
+      <motion.div
+        className="mx-auto flex w-full max-w-6xl flex-col gap-12 text-[color:var(--ink)]"
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.14 } },
+        }}
+      >
+        <motion.div className="mb-4 text-center" variants={headingVariants}>
+          <motion.span
+            variants={headingVariants}
+            className="text-[10px] font-semibold uppercase tracking-[0.48em] text-[color:var(--navy-700)]"
+          >
             Media & Gallery
-          </span>
-          <h2
+          </motion.span>
+          <motion.h2
+            variants={headingVariants}
             id="media-heading"
             className="mt-4 text-3xl font-black uppercase leading-tight md:text-4xl lg:text-5xl"
           >
             Press spotlights on our maison moments
-          </h2>
-          <p className="mx-auto mt-7 max-w-2xl text-sm font-medium leading-relaxed text-[color:var(--ink)]/75">
+          </motion.h2>
+          <motion.p
+            variants={headingVariants}
+            className="mx-auto mt-7 max-w-2xl text-sm font-medium leading-relaxed text-[color:var(--ink)]/75"
+          >
             From architectural unveilings to artisan collaborations, discover the narratives defining the Alfanar Enterprises world across luxury media.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <BrandsMasonry items={masonryItems} />
-      </div>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 60 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          <BrandsMasonry items={masonryItems} />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

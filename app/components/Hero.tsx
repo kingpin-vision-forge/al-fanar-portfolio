@@ -1,8 +1,10 @@
+"use client";
+
 import { heroBanners } from "@/lib/content";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useState, useEffect, useRef, useMemo } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants, useScroll, useTransform, useSpring } from "framer-motion";
 
 type HeroProps = {
   className?: string;
@@ -10,8 +12,20 @@ type HeroProps = {
 
 export default function Hero({ className }: HeroProps) {
   const [showBanners, setShowBanners] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const bannersRef = useRef<HTMLDivElement>(null);
   const MotionLink = useMemo(() => motion(Link), []);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const heroLift = useSpring(useTransform(scrollYProgress, [0, 1], [0, -120]), {
+    stiffness: 120,
+    damping: 22,
+    mass: 0.35,
+  });
+  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.82]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.4, 1], [0.18, 0.08, 0]);
 
   useEffect(() => {
     if (showBanners && bannersRef.current) {
@@ -57,21 +71,24 @@ export default function Hero({ className }: HeroProps) {
   return (
     <section
       id="top"
+      ref={sectionRef}
       className={cn(
         "relative flex min-h-[80vh] w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-white via-[#f4f6ff] to-[var(--navy-300)]/10 px-6 py-20 md:min-h-screen md:py-28",
         "border-b border-[color:var(--navy-300)]/30",
         className
       )}
     >
-      <div
+      <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 hidden h-full w-full bg-[radial-gradient(circle_at_top,rgba(18,48,255,0.18)0%,rgba(18,48,255,0)_55%)] md:block"
+        style={{ opacity: glowOpacity }}
       />
       <motion.div
         initial="hidden"
         animate="visible"
         variants={{ visible: { transition: { staggerChildren: 0.18 } } }}
         className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 text-center md:gap-16"
+        style={{ y: heroLift, opacity: heroOpacity }}
       >
         <motion.div
           variants={heroStack}

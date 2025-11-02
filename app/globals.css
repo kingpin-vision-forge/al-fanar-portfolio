@@ -19,6 +19,10 @@
   --font-serif: "Bodoni Moda", "Didot", "Bodoni MT", "Times New Roman", serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
   background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, var(--navy-300) 6%, #ffffff) 100%);
