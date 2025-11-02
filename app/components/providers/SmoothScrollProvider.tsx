@@ -22,8 +22,7 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
     const lenis = new Lenis({
       duration: 1.1,
       smoothWheel: true,
-      smoothTouch: false,
-      normalizeWheel: true,
+      syncTouch: false,
       gestureOrientation: "vertical",
     });
 

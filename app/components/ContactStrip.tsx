@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { contactChannels } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { defaultEase } from "@/lib/motion";
 import { motion, useInView } from "framer-motion";
 import { useMemo, useRef } from "react";
 
@@ -19,7 +20,7 @@ export default function ContactStrip({ className }: ContactStripProps) {
       visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.65, ease: defaultEase },
       },
     }),
     [],
@@ -49,13 +50,13 @@ export default function ContactStrip({ className }: ContactStripProps) {
         className="flex w-full max-w-6xl flex-col gap-12 rounded-[36px] border border-[color:var(--navy-300)]/35 bg-white/95 px-8 py-16 text-center text-[color:var(--ink)] shadow-[0_32px_80px_rgba(8,16,80,0.15)] backdrop-blur-lg md:flex-row md:items-center md:justify-between md:px-12 md:py-20 md:text-left"
         initial={{ opacity: 0.75, scale: 0.98, y: 40 }}
         animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0.75, scale: 0.98, y: 40 }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.65, ease: defaultEase }}
       >
         <motion.div
           className="space-y-4"
           initial={{ opacity: 0, x: -30 }}
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          transition={{ duration: 0.6, ease: defaultEase, delay: 0.1 }}
         >
           <span className="text-[10px] font-semibold uppercase tracking-[0.48em] text-[color:var(--navy-700)]">
             Contact

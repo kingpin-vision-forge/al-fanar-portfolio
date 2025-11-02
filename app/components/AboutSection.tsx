@@ -1,7 +1,8 @@
 "use client";
 import { aboutCopy, brand } from "@/lib/content";
-import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { defaultEase } from "@/lib/motion";
+import { motion, useInView } from "framer-motion";
 import { useMemo, useRef } from "react";
 
 type AboutSectionProps = {
@@ -18,7 +19,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
       visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.75, ease: defaultEase },
       },
     }),
     [],
@@ -31,7 +32,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
         opacity: 1,
         y: 0,
         scale: 1,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.7, ease: defaultEase },
       },
     }),
     [],
@@ -116,7 +117,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
               className="rounded-[32px] border border-[color:var(--navy-300)]/35 bg-white/95 p-10 text-left text-[color:var(--ink)] shadow-[0_26px_70px_rgba(8,16,80,0.12)] backdrop-blur"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+              transition={{ duration: 0.7, ease: defaultEase, delay: 0.22 }}
             >
               <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-[color:var(--navy-700)]">
                 Philosophy

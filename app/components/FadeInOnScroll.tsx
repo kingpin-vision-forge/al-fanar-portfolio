@@ -3,6 +3,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { useMemo, useRef } from "react";
 import { motion, useInView, useScroll, useSpring, useTransform, type MotionStyle } from "framer-motion";
+import { defaultEase } from "@/lib/motion";
 
 interface FadeInOnScrollProps {
   children: ReactNode;
@@ -76,7 +77,7 @@ export default function FadeInOnScroll({
           transition: {
             duration,
             delay,
-            ease: [0.22, 1, 0.36, 1],
+            ease: defaultEase,
             staggerChildren,
             when: "beforeChildren",
           },

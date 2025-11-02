@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import BrandsMasonry from "@/app/components/reactbits/BrandsMasonry";
+import { defaultEase } from "@/lib/motion";
 import { motion, useInView } from "framer-motion";
 import { useMemo, useRef } from "react";
 
@@ -111,7 +112,7 @@ export default function MediaShowcase({ className }: MediaShowcaseProps) {
       visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.7, ease: defaultEase },
       },
     }),
     [],
@@ -175,7 +176,7 @@ export default function MediaShowcase({ className }: MediaShowcaseProps) {
             visible: {
               opacity: 1,
               y: 0,
-              transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+              transition: { duration: 0.9, ease: defaultEase },
             },
           }}
         >

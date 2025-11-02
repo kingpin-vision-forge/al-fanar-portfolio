@@ -3,6 +3,7 @@
 import { heroBanners } from "@/lib/content";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { defaultEase } from "@/lib/motion";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence, Variants, useScroll, useTransform, useSpring } from "framer-motion";
 
@@ -63,7 +64,7 @@ export default function Hero({ className }: HeroProps) {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
+        ease: defaultEase,
       },
     },
   };

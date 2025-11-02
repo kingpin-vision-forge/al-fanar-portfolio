@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { categoryCards } from "@/lib/content";
+import { defaultEase } from "@/lib/motion";
 import { motion, useInView } from "framer-motion";
 import { useMemo, useRef } from "react";
 
@@ -14,10 +15,13 @@ export default function BrandsPage() {
       visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+        transition: {
+          duration: 0.6,
+          ease: defaultEase,
+        },
       },
     }),
-    [],
+    []
   );
 
   const cardVariants = useMemo(
@@ -27,10 +31,10 @@ export default function BrandsPage() {
         opacity: 1,
         y: 0,
         rotateX: 0,
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.8, ease: defaultEase },
       },
     }),
-    [],
+    []
   );
 
   return (
@@ -64,7 +68,8 @@ export default function BrandsPage() {
             variants={headingVariants}
             className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-[color:var(--ink)]/75"
           >
-            Explore the trio of ateliers shaping Alfanar—from precision menswear to radiant modesty and kinetic children’s drops.
+            Explore the trio of ateliers shaping Alfanar—from precision menswear
+            to radiant modesty and kinetic children’s drops.
           </motion.p>
         </motion.div>
 
@@ -74,7 +79,9 @@ export default function BrandsPage() {
           animate={isInView ? "visible" : "hidden"}
           variants={{
             hidden: {},
-            visible: { transition: { delayChildren: 0.18, staggerChildren: 0.18 } },
+            visible: {
+              transition: { delayChildren: 0.18, staggerChildren: 0.18 },
+            },
           }}
         >
           {categoryCards.map((card) => (

@@ -3,6 +3,7 @@ import { categoryCards } from "@/lib/content";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { defaultEase } from "@/lib/motion";
 import { useMemo, useRef } from "react";
 
 const cardDescriptions: Record<string, string> = {
@@ -25,7 +26,7 @@ export default function CategoryGrid({ className }: CategoryGridProps) {
       visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.7, ease: defaultEase },
       },
     }),
     [],
@@ -38,7 +39,7 @@ export default function CategoryGrid({ className }: CategoryGridProps) {
         opacity: 1,
         y: 0,
         rotateX: 0,
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.8, ease: defaultEase },
       },
     }),
     [],

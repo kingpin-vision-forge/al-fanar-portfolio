@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { defaultEase } from "@/lib/motion";
 
 const imagePaths = [
   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
@@ -27,7 +28,7 @@ function CollageTile({ src, alt, priority }: CollageTileProps) {
       initial={{ opacity: 0, y: 40, rotateX: 6 }}
       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
       viewport={{ once: true, amount: 0.35 }}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.65, ease: defaultEase }}
       whileHover={{ scale: 1.015 }}
     >
       {!hasError ? (
